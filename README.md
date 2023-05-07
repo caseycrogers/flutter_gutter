@@ -1,4 +1,4 @@
-![](https://github.com/caseycrogers/implicit_navigator/blob/main/implicit_navigator_banner.png)
+![](https://github.com/caseycrogers/flutter_gutter/blob/main/dash_in_the_gutter.png)
 Ensure all visual gaps between you widgets are consistent, adapted to the axis direction, and respond to screen size!
 
 ## Core Features
