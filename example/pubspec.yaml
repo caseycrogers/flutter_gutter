@@ -1,17 +1,16 @@
 name: example
 description: A new Flutter project.
-publish_to: none
+publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.5 <3.0.0'
-
+  sdk: '>=2.19.6 <3.0.0'
 dependencies:
   flutter:
     sdk: flutter
-  gutter:
-    path: '..'
+  flutter_gutter:
+    path: ..
 
 dev_dependencies:
   flutter_test:

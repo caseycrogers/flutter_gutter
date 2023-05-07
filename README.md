@@ -20,7 +20,7 @@ where larger or smaller gaps are more appropriate.
 
 ## Example
 
-Without Gutter
+Without `flutter_gutter`
 ```dart
 return Column(
   chilren: [
@@ -33,7 +33,7 @@ return Column(
 );
 ```
 
-### With Gutter
+With `flutter_gutter`
 ```dart
 return Column(
   chilren: [

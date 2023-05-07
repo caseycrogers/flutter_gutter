@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gutter/gutter.dart';
+import 'package:flutter_gutter/flutter_gutter.dart';
 
 void main() {
   runApp(const MyApp());
