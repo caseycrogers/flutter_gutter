@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 /// Creates a `SizedBox` with a height of size corresponding to the layout axis
 /// of the first `Scrollable`, `Row` or `Column` above this widget.
 class Gap extends StatelessWidget {
+  /// I have to document the constructor or else I lose out on those sweet sweet
+  /// pub points. But this is stupid. The default constructor docs are basically
+  /// always redundant with the class docs.
   const Gap({super.key, required this.size});
 
+  /// The size of the gap.
   final double size;
 
   @override
@@ -23,7 +27,7 @@ class Gap extends StatelessWidget {
 class _AxisAware extends StatelessWidget {
   const _AxisAware({required this.builder});
 
-  final Widget Function(BuildContext, Orientation) builder;
+  final OrientationWidgetBuilder builder;
 
   @override
   Widget build(BuildContext context) {

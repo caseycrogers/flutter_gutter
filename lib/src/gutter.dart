@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:gutter/gutter.dart';
 
-/// A gap twice the standard gutter size according to Flutter Breakpoints.
+/// A gap twice the standard gutter size according to Material Design's
+/// breakpoints system.
 class GutterLarge extends StatelessWidget {
   const GutterLarge({super.key});
 
@@ -10,7 +11,8 @@ class GutterLarge extends StatelessWidget {
   Widget build(BuildContext context) => Gap(size: context.gutterLarge);
 }
 
-/// A gap of the standard gutter size according to Flutter Breakpoints.
+/// A gap of the standard gutter size according to Material Design's breakpoints
+/// system.
 class Gutter extends StatelessWidget {
   const Gutter({super.key});
 
@@ -18,7 +20,8 @@ class Gutter extends StatelessWidget {
   Widget build(BuildContext context) => Gap(size: context.gutter);
 }
 
-/// A gap half the standard gutter size according to Flutter Breakpoints.
+/// A gap half the standard gutter size according to Material Design's
+/// breakpoints system
 class GutterSmall extends StatelessWidget {
   const GutterSmall({super.key});
 
@@ -26,7 +29,8 @@ class GutterSmall extends StatelessWidget {
   Widget build(BuildContext context) => Gap(size: context.gutterSmall);
 }
 
-/// A gap a quarter the standard gutter size according to Flutter Breakpoints.
+/// A gap a quarter the standard gutter size according to Material Design's
+/// breakpoints system
 class GutterTiny extends StatelessWidget {
   const GutterTiny({super.key});
 
@@ -34,7 +38,8 @@ class GutterTiny extends StatelessWidget {
   Widget build(BuildContext context) => Gap(size: context.gutterTiny);
 }
 
-/// A gap of the standard margin size according to Flutter Breakpoints.
+/// A gap of the standard margin size according to Material Design's breakpoints
+/// system
 class Margin extends StatelessWidget {
   const Margin({super.key});
 
