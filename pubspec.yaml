@@ -1,8 +1,8 @@
-name: gutter
+name: flutter_gutter
 description: Get your UI out of the gutter!
 repository: https://github.com/caseycrogers/flutter_gutter
 
-version: 0.1.0+1
+version: 0.1.0
 
 environment:
   sdk: '>=2.19.5 <3.0.0'
