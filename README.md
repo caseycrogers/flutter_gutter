@@ -1,4 +1,4 @@
-![](https://github.com/caseycrogers/flutter_gutter/blob/main/dash_in_the_gutter.png)
+![](https://github.com/caseycrogers/flutter_gutter/blob/1c37c2039df3bbccd20510589942050efe8f05cc/dash_in_the_gutter.png)
 Ensure all visual gaps between you widgets are consistent, adapted to the axis direction, and respond to screen size!
 
 ## Core Features

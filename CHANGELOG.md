@@ -11,4 +11,3 @@
 
 * Made banner image more fun.
 * Improved docs wording
-
