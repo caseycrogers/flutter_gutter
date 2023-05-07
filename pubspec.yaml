@@ -1,8 +1,9 @@
 name: flutter_gutter
-description: Get your UI out of the gutter! Space your widgets consistently and easily.
+description: Get your UI out of the gutter! Ensure all visual gaps between you widgets are consistent, adapted to the
+  axis direction, and respond to screen size.
 repository: https://github.com/caseycrogers/flutter_gutter
 
-version: 0.1.0
+version: 0.1.2
 
 environment:
   sdk: '>=2.19.5 <3.0.0'
