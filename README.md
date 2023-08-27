@@ -26,7 +26,7 @@ You can us `Gutter` with other packages using `GutterConfiguration` and `widgetT
 Without `flutter_gutter`:
 ```dart
 return Column(
-  chilren: [
+  children: [
     const Text('I hate using sized box.'),
     SizedBox(height: 10),
     const Text('If only there were a better way...'),
@@ -38,7 +38,7 @@ You have to manually specify the height and provide a gap size yourself.
 With `flutter_gutter`:
 ```dart
 return Column(
-  chilren: [
+  children: [
     const Text('I hate using sized box.'),
     Gutter(),
     const Text('And now I don\'t have to!'),
