@@ -46,3 +46,57 @@ class Margin extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Gap(size: context.margin);
 }
+
+/// An inherited widget that sets custom [Gutter] and [Gap] behavior.
+class GutterConfigurationData {
+  const GutterConfigurationData(this.widgetToAxis);
+
+  /// A function to get the axis of a widget not supported by flutter_gutter.
+  ///
+  /// This should return an `Axis` if a widget is recognized and should return
+  /// null if it is not.
+  ///
+  /// For example, the following would allow you to put [Gutter]'s in widgets
+  /// from `Boxy` (https://pub.dev/packages/boxy):
+  ///
+  /// ```dart
+  /// widgetToAxis: (widget) {
+  ///    if (widget is BoxyFlex) {
+  ///     // Boxy widgets expose their axes via `BoxyFlex.direction`.
+  ///     return widget.direction;
+  ///   }
+  ///   return null;
+  /// },
+  /// ```
+  final Axis? Function(Widget widget)? widgetToAxis;
+
+  @override
+  bool operator ==(Object other) {
+    return other is GutterConfigurationData &&
+        other.widgetToAxis == widgetToAxis;
+  }
+
+  @override
+  int get hashCode => widgetToAxis.hashCode;
+}
+
+class GutterConfiguration extends InheritedWidget {
+  const GutterConfiguration({
+    super.key,
+    required super.child,
+    required this.data,
+  });
+
+  final GutterConfigurationData data;
+
+  static GutterConfigurationData? maybeOf(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<GutterConfiguration>()
+        ?.data;
+  }
+
+  @override
+  bool updateShouldNotify(GutterConfiguration oldWidget) {
+    return oldWidget.data == data;
+  }
+}

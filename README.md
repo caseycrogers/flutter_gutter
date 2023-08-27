@@ -1,5 +1,5 @@
-![](https://github.com/caseycrogers/flutter_gutter/blob/main/dash_in_the_gutter.png)
-Ensure all visual gaps between you widgets are consistent, adapted to the axis direction, and respond to screen size!
+![](https://raw.githubusercontent.com/caseycrogers/flutter_gutter/main/dash_in_the_gutter.png)
+Ensure all visual gaps between your widgets are consistent, adapted to the axis direction, and respond to screen size!
 
 ## Core Features
 
@@ -19,9 +19,11 @@ where larger or smaller gaps are more appropriate.
 For more flexibility, you can also use the provided extension on `BuildContext` to reference the gutter and margin sizes
 directly (`context.gutter`, `context.margin`) or create a `Gap` with a manually set size.
 
+You can us `Gutter` with other packages using `GutterConfiguration` and `widgetToAxis` (see example).
+
 ## Example
 
-Without `flutter_gutter`
+Without `flutter_gutter`:
 ```dart
 return Column(
   chilren: [
@@ -33,7 +35,7 @@ return Column(
 ```
 You have to manually specify the height and provide a gap size yourself.
 
-With `flutter_gutter`
+With `flutter_gutter`:
 ```dart
 return Column(
   chilren: [
@@ -43,5 +45,28 @@ return Column(
   ],
 );
 ```
-The `Gutter` widget identifies it's in a vertical layout (`Column`) and automatically creates a vertical gap. It also
-looks up the screen size and sizes the gap accordingly so you don't have to specify a size manually.
+
+The `Gutter` widget identifies that it's in a vertical layout (`Column`) and automatically creates a vertical gap. It
+also looks up the screen size and sizes the gap accordingly so you don't have to specify a size manually.
+
+You can even use `Gutter` with widgets from other packages:
+```dart
+return GutterConfiguration(
+  child: BoxyColumn(
+    data: BoxyConfigurationData(
+      widgetToAxis: (widget) {
+        if (widget is BoxyFlex) {
+          // Boxy widgets expose their axes via `BoxyFlex.direction`.
+          return widget.direction;
+        }
+        return null;
+      },
+    ),
+    chilren: [
+      const Text('Boxy widgets aren\'t supported by `Gutter` ):.'),
+      Gutter(),
+      const Text('But with `GutterConfiguration` I can make Gutter work with any widget!'),
+    ],
+  ),
+);
+```
