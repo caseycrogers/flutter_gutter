@@ -1,7 +1,7 @@
 ## [1.0.0] - 10/04/2023
 
 * Use Material 3's new breakpoint values if `useMaterial3` is true.
-* Dynamically check for `direction` to find the axis of arbitrary widgets..
+* Dynamically check for `direction` to find the axis of arbitrary widgets.
 
 ## [0.1.4] - 09/01/2023
 
