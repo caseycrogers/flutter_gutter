@@ -39,7 +39,6 @@ class Gap extends StatelessWidget {
   Widget build(BuildContext context) {
     return _AxisAware(
       builder: (context, orientation) {
-        print(orientation);
         return SizedBox(
           width: orientation == Orientation.landscape ? size : null,
           height: orientation != Orientation.portrait ? null : size,
@@ -63,13 +62,16 @@ class _AxisAware extends StatelessWidget {
       if (orientation != null) {
         return false;
       }
-      if (widget is Flex) {
-        orientation = widget.direction.toOrientation;
-        return false;
-      }
       if (widget is Scrollable) {
         orientation = widget.axis.toOrientation;
         return false;
+      }
+      try {
+        // Dynamically check for an axis.
+        orientation = ((widget as dynamic).direction as Axis).toOrientation;
+        return false;
+      } catch (_) {
+        return true;
       }
       return true;
     });
