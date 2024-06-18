@@ -27,9 +27,9 @@ You can us `Gutter` with other packages using `GutterConfiguration` and `widgetT
 
 Flutter Gutter's widgets traverse up the widget tree until they find an ancestor that meets one of
 the following conditions:
-1. `Gap.customWidgetToAxis(widget)` returns a non-null `Axis` (this is a custom static
-   function that lets you extend Flutter Gutter to support arbitrary widgets)
-2. `widget` is a scrollable with a defined `axis`
+1. `GutterConfiguration.maybeOf(context).customWidgetToAxis(widget)` returns a non-null `Axis` (this
+   is a custom function that lets you extend Flutter Gutter to support arbitrary widgets).
+2. `widget` is a scrollable with a defined `axis`.
 3. `widget` has am `Axis direction` attribute (for example, Flutter Gutter supports 
    [Boxy](https://pub.dev/packages/boxy)'s widgets automatically).
 

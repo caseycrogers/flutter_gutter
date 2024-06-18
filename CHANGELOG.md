@@ -1,3 +1,7 @@
+## [1.0.2] - 06/18/2024
+
+* Fixed minor readme error.
+
 ## [1.0.1] - 06/18/2024
 
 * Updated README to remove outdated examples and clarify supported widgets.
