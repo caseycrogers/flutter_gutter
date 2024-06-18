@@ -56,19 +56,19 @@ class GutterConfigurationData {
   /// This should return an `Axis` if a widget is recognized and should return
   /// null if it is not.
   ///
-  /// For example, the following would allow you to put [Gutter]'s in widgets
-  /// from `Boxy` (https://pub.dev/packages/boxy):
+  /// Note that this is not necessary if your widget already has an
+  /// `Axis.direction` attribute as Flutter Gutter will find the axis from this
+  /// automatically.
   ///
   /// ```dart
   /// widgetToAxis: (widget) {
-  ///    if (widget is BoxyFlex) {
-  ///     // Boxy widgets expose their axes via `BoxyFlex.direction`.
-  ///     return widget.direction;
+  ///    if (widget is MyCustomHorizontalWidget) {
+  ///     return Axis.horizontal;
   ///   }
   ///   return null;
   /// },
   /// ```
-  final Axis? Function(Widget widget)? widgetToAxis;
+  final Axis? Function(Widget widget) widgetToAxis;
 
   @override
   bool operator ==(Object other) {

@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gutter/flutter_gutter.dart';
 
 void main() {
-  Gap.customWidgetToAxis = (widget) {
-    if (widget is Center) {
-      return Axis.horizontal;
-    }
-    return null;
-  };
   runApp(const MyApp());
 }
 

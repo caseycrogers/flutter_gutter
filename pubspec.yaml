@@ -3,7 +3,7 @@ description: Get your UI out of the gutter! Ensure all visual gaps between your 
   axis direction, and respond to screen size.
 repository: https://github.com/caseycrogers/flutter_gutter
 
-version: 1.0.0
+version: 1.0.1
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

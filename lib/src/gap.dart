@@ -1,36 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gutter/flutter_gutter.dart';
 
 /// Creates a `SizedBox` with a height of size corresponding to the layout axis
 /// of the first `Scrollable`, `Row` or `Column` above this widget.
 class Gap extends StatelessWidget {
   const Gap({super.key, required this.size});
-
-  /// A function to check the axis of widgets not already supported by
-  /// flutter_gutter.
-  ///
-  /// This should return an `Axis` if a widget is recognized and should return
-  /// null if it is not.
-  ///
-  /// Set this function once in your app (in main, in an initState at the top of
-  /// your widget tree, etc) if you want to use [Gutter] or [Gap] in
-  /// widgets other than the Flutter built-ins.
-  ///
-  /// For example, the following would allow you to put [Gutter]'s in widgets
-  /// from `Boxy` (https://pub.dev/packages/boxy):
-  ///
-  /// ```dart
-  /// // In `main()`.
-  /// Gap.customWidgetToAxis = (widget) {
-  /// if (widget is BoxyRow) {
-  ///   return Axis.horizontal;
-  /// }
-  /// if (widget is BoxyColumn) {
-  ///   return Axis.vertical;
-  /// }
-  /// return null;
-  /// };
-  /// ```
-  static Axis? Function(Widget widget)? customWidgetToAxis;
 
   /// The size of the gap.
   final double size;
@@ -55,10 +29,13 @@ class _AxisAware extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GutterConfigurationData? gutterConfiguration =
+        GutterConfiguration.maybeOf(context);
     Orientation? orientation;
     context.visitAncestorElements((element) {
       final Widget widget = element.widget;
-      orientation = Gap.customWidgetToAxis?.call(widget)?.toOrientation;
+      orientation =
+          gutterConfiguration?.widgetToAxis.call(widget)?.toOrientation;
       if (orientation != null) {
         return false;
       }
@@ -73,7 +50,6 @@ class _AxisAware extends StatelessWidget {
       } catch (_) {
         return true;
       }
-      return true;
     });
     assert(
       orientation != null,

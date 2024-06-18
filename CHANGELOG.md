@@ -1,3 +1,8 @@
+## [1.0.1] - 06/18/2024
+
+* Updated README to remove outdated examples and clarify supported widgets.
+* Cleaned up code and fixed bugs in custom widget to axis system.
+
 ## [1.0.0] - 10/04/2023
 
 * Use Material 3's new breakpoint values if `useMaterial3` is true.
