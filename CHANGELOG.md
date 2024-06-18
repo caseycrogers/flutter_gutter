@@ -1,6 +1,6 @@
 ## [1.0.2] - 06/18/2024
 
-* Fixed minor readme error.
+* Fixed minor readme error and cleaned up examples.
 
 ## [1.0.1] - 06/18/2024
 

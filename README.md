@@ -43,7 +43,8 @@ and want to see it improved, please upvote the linked issue.
 
 ## Example
 
-Without `flutter_gutter`:
+Without `flutter_gutter` you have to manually specify the axis direction (by using `height` or 
+`width`) and specify size of the gap yourself:
 ```dart
 return Column(
   children: [
@@ -53,21 +54,26 @@ return Column(
   ],
 );
 ```
-You have to manually specify the height and provide a gap size yourself.
 
-With `flutter_gutter`:
+With `flutter_gutter` the `Gutter` widget identifies that it's in a vertical layout (`Column`) and 
+automatically creates a vertical gap. It also looks up the screen size and sizes the gap accordingly
+so you don't have to specify a gap size manually:
 ```dart
 return Column(
   children: [
     const Text('I hate using sized box.'),
+    // Automatically creates a vertical gap.
+    // The gap is sized according to the Material Breakpoint definitions
+    // This defaults to 16dp on most phones:
+    // https://m3.material.io/foundations/layout/applying-layout/compact
+    // For an overview of the system and all the spacing definitions:
+    // https://m3.material.io/foundations/layout/applying-layout/window-size-classes
     Gutter(),
     const Text('And now I don\'t have to!'),
   ],
 );
 ```
 
-The `Gutter` widget identifies that it's in a vertical layout (`Column`) and automatically creates a vertical gap. It
-also looks up the screen size and sizes the gap accordingly so you don't have to specify a size manually.
 
 To use `Gutter` with widgets from other packages, put a 
 ```dart
