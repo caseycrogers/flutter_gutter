@@ -35,12 +35,16 @@ class _AxisAware extends StatelessWidget {
     context.visitAncestorElements((element) {
       final Widget widget = element.widget;
       orientation =
-          gutterConfiguration?.widgetToAxis.call(widget)?.toOrientation;
+          gutterConfiguration?.widgetToAxis?.call(widget)?.toOrientation;
       if (orientation != null) {
         return false;
       }
       if (widget is Scrollable) {
         orientation = widget.axis.toOrientation;
+        return false;
+      }
+      if (gutterConfiguration?.dynamicAxisCheck == false) {
+        // Don't run the dynamic check.
         return false;
       }
       try {

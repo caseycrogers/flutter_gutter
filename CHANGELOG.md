@@ -1,3 +1,8 @@
+## [1.0.3] - 07/27/2024
+
+* Improved readme.
+* Added opt-out for dynamic axis check.
+
 ## [1.0.2] - 06/18/2024
 
 * Fixed minor readme error and cleaned up examples.

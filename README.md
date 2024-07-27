@@ -30,7 +30,7 @@ the following conditions:
 1. `GutterConfiguration.maybeOf(context).customWidgetToAxis(widget)` returns a non-null `Axis` (this
    is a custom function that lets you extend Flutter Gutter to support arbitrary widgets).
 2. `widget` is a scrollable with a defined `axis`.
-3. `widget` has am `Axis direction` attribute (for example, Flutter Gutter supports 
+3. `widget` has an `Axis direction` attribute (for example, Flutter Gutter supports 
    [Boxy](https://pub.dev/packages/boxy)'s widgets automatically).
 
 Note that case 3 means that ANY widget with an axis is supported, however this is a dynamic check
@@ -62,34 +62,35 @@ so you don't have to specify a gap size manually:
 return Column(
   children: [
     const Text('I hate using sized box.'),
-    // Automatically creates a vertical gap.
-    // The gap is sized according to the Material Breakpoint definitions
-    // This defaults to 16dp on most phones:
-    // https://m3.material.io/foundations/layout/applying-layout/compact
-    // For an overview of the system and all the spacing definitions:
-    // https://m3.material.io/foundations/layout/applying-layout/window-size-classes
     Gutter(),
     const Text('And now I don\'t have to!'),
   ],
 );
 ```
 
+To use the material break point values directly, use the extension on `context`:
+```dart
+return Padding(
+  padding: EdgeInsets.only(left: context.gutter, right: context.gutterSmall),
+  child: Text('This is the margin size on this device: ${context.margin}'),
+);
+```
 
-To use `Gutter` with widgets from other packages, put a 
+To use `Gutter` with custom widgets that don't expose an `axis` argument, use `GutterConfiguration`: 
 ```dart
 return GutterConfiguration(
-  child: BoxyColumn(
-    data: BoxyConfigurationData(
-      widgetToAxis: (widget) {
-        if (widget is BoxyFlex) {
-          // Boxy widgets expose their axes via `BoxyFlex.direction`.
-          return widget.direction;
-        }
-        return null;
-      },
-    ),
+  data: GutterConfigurationData(
+    widgetToAxis: (widget) {
+      if (widget is BoxyFlex) {
+        // Boxy widgets expose their axes via `BoxyFlex.direction`.
+        return widget.direction;
+      }
+      return null;
+    },
+  ),
+  child: MyCustomColumn(
     chilren: [
-      const Text('Boxy widgets aren\'t supported by `Gutter` ):.'),
+      const Text('This widget wasn\'t supported by `Gutter` ).'),
       Gutter(),
       const Text('But with `GutterConfiguration` I can make Gutter work with any widget!'),
     ],
