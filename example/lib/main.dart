@@ -60,9 +60,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const GutterSmall(),
               const Text('times'),
-              const Center(
-                child: Gutter(),
-              ),
             ],
           ),
         ),

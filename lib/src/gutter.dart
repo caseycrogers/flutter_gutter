@@ -51,7 +51,7 @@ class Margin extends StatelessWidget {
 class GutterConfigurationData {
   const GutterConfigurationData({
     this.widgetToAxis,
-    this.dynamicAxisCheck = false,
+    this.dynamicAxisCheck = true,
   });
 
   /// A function to get the axis of a widget not supported by flutter_gutter.
@@ -76,12 +76,10 @@ class GutterConfigurationData {
   /// Whether or not gutter widgets should dynamically check for an `axis`
   /// argument on unrecognized widgets.
   ///
-  /// Turning this off may improve performance slightly but means that widgets
-  /// from other packages such as Boxy will not be supported out of the box and
-  /// you'll have to manually support them via [widgetToAxis].
-  ///
-  /// You may also want to turn this off if you have breakpoints on uncaught
-  /// exceptions on as the dynamic check relies on a try...catch.
+  /// Turning this off is useful if you have breakpoints on uncaught exceptions
+  /// on as the dynamic check relies on a try...catch. However, widgets from
+  /// other packages (eg `Boxy`) will not be supported out of the bonx if you
+  /// turn off the dynamic check.
   ///
   /// Defaults to true.
   final bool dynamicAxisCheck;

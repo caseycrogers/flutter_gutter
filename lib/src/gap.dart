@@ -43,9 +43,14 @@ class _AxisAware extends StatelessWidget {
         orientation = widget.axis.toOrientation;
         return false;
       }
-      if (gutterConfiguration?.dynamicAxisCheck == false) {
-        // Don't run the dynamic check.
+      if (widget is Flex) {
+        orientation = widget.direction.toOrientation;
         return false;
+      }
+      if (gutterConfiguration?.dynamicAxisCheck == false) {
+        // Skip to the next ancestor element instead of running the dynamic
+        // check.
+        return true;
       }
       try {
         // Dynamically check for an axis.
