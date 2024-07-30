@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_gutter/flutter_gutter.dart';
+import '../flutter_gutter.dart';
 
 /// A gap twice the standard gutter size according to Material Design's
 /// breakpoints system.

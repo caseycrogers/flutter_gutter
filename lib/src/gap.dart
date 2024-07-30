@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gutter/flutter_gutter.dart';
+import '../flutter_gutter.dart';
 
 /// Creates a `SizedBox` with a height of size corresponding to the layout axis
 /// of the first `Scrollable`, `Row` or `Column` above this widget.

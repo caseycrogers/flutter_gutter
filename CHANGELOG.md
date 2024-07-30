@@ -1,3 +1,5 @@
+# Changelog
+
 ## [1.0.3] - 07/27/2024
 
 * Improved readme.
