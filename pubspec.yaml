@@ -18,6 +18,7 @@ dependencies:
   flutter:
     sdk: flutter
   adaptive_breakpoints: ^0.1.6
+  flutter_adaptive_scaffold: ^0.1.11+1
 
 dev_dependencies:
   flutter_test:
