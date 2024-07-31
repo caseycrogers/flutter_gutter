@@ -18,6 +18,9 @@ enum GutterType {
 
   /// An extra large gutter.
   extraLarge,
+
+  /// An expanded gutter.
+  expand,
 }
 
 /// A gap of the standard gutter size according to Material Design's breakpoints

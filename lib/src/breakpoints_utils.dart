@@ -22,6 +22,8 @@ extension BreakpointExtensions on BuildContext {
         return materialSpacing * 2;
       case GutterType.extraLarge:
         return materialSpacing * 4;
+      case GutterType.expand:
+        return double.infinity;
     }
   }
 

@@ -5,19 +5,32 @@ import '../flutter_gutter.dart';
 /// of the first `Scrollable`, `Row` or `Column` above this widget.
 class Gap extends StatelessWidget {
   /// Creates a new [Gap] widget.
-  const Gap({super.key, required this.size});
+  const Gap({super.key, required this.type, this.size});
 
-  /// The size of the gap.
-  final double size;
+  /// The type of gutter to create.
+  final GutterType type;
+
+  /// The size of the gutter.
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
     return _AxisAware(
       builder: (BuildContext context, Orientation orientation) {
-        return SizedBox(
-          width: orientation == Orientation.landscape ? size : null,
-          height: orientation != Orientation.portrait ? null : size,
-        );
+        final double gapSize = size ?? context.gutter(type: type);
+        if (type == GutterType.expand) {
+          return Expanded(
+            child: SizedBox(
+              width: orientation == Orientation.landscape ? gapSize : null,
+              height: orientation != Orientation.portrait ? null : gapSize,
+            ),
+          );
+        } else {
+          return SizedBox(
+            width: orientation == Orientation.landscape ? gapSize : null,
+            height: orientation != Orientation.portrait ? null : gapSize,
+          );
+        }
       },
     );
   }
