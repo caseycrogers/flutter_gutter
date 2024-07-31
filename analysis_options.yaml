@@ -13,3 +13,4 @@ linter:
     always_specify_types: true
     omit_local_variable_types: false
     public_member_api_docs: true
+    directives_ordering: true

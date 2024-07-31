@@ -12,3 +12,4 @@ linter:
     always_use_package_imports: false
     always_specify_types: true
     omit_local_variable_types: false
+    directives_ordering: true

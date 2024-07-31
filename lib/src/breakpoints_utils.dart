@@ -1,6 +1,5 @@
-import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 
 import '../flutter_gutter.dart';
 
@@ -10,18 +9,18 @@ extension BreakpointExtensions on BuildContext {
   double get margin => materialSpacing;
 
   /// The size according to Material Design's with a specified [GutterType].
-  double gutter({GutterType type = GutterType.medium}) {
+  double gutter({GutterType type = GutterType.medium, double? scaleFactor}) {
     switch (type) {
       case GutterType.tiny:
-        return materialSpacing / 4;
+        return materialSpacing / (scaleFactor ?? 4);
       case GutterType.small:
-        return materialSpacing / 2;
+        return materialSpacing / (scaleFactor ?? 2);
       case GutterType.medium:
         return materialSpacing;
       case GutterType.large:
-        return materialSpacing * 2;
+        return materialSpacing * (scaleFactor ?? 2);
       case GutterType.extraLarge:
-        return materialSpacing * 4;
+        return materialSpacing * (scaleFactor ?? 4);
       case GutterType.expand:
         return double.infinity;
     }

@@ -60,6 +60,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const Gutter.medium(),
               const Text('times'),
+              const Gutter(size: 20, scaleFactor: 3, type: GutterType.large),
+              const Text('test'),
+              const AdaptiveGutter(
+                small: Gutter.tiny(),
+                medium: Gutter.large(),
+                large: Gutter.extraLarge(),
+              ),
             ].withGutter(),
           ),
         ),
@@ -68,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

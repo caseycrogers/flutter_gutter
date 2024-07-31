@@ -4,38 +4,46 @@ import '../flutter_gutter.dart';
 
 /// A gap of the standard gutter size according to Material Design's breakpoints
 /// system.
+/// Creates a `SizedBox` with a height of size corresponding to the layout axis
+/// of the first `Scrollable`, `Row` or `Column` above this widget.
 class Gutter extends StatelessWidget {
   /// Creates a new [Gutter] widget.
   const Gutter({
     super.key,
     this.size,
     this.type = GutterType.medium,
+    this.scaleFactor,
   });
 
   /// Creates a new [Gutter] widget with a tiny size.
   const Gutter.tiny({super.key})
       : size = null,
-        type = GutterType.tiny;
+        type = GutterType.tiny,
+        scaleFactor = null;
 
   /// Creates a new [Gutter] widget with a small size.
   const Gutter.small({super.key})
       : size = null,
-        type = GutterType.small;
+        type = GutterType.small,
+        scaleFactor = null;
 
   /// Creates a new [Gutter] widget with a medium size.
   const Gutter.medium({super.key})
       : size = null,
-        type = GutterType.medium;
+        type = GutterType.medium,
+        scaleFactor = null;
 
   /// Creates a new [Gutter] widget with a large size.
   const Gutter.large({super.key})
       : size = null,
-        type = GutterType.large;
+        type = GutterType.large,
+        scaleFactor = null;
 
   /// Creates a new [Gutter] widget with an extra large size.
   const Gutter.extraLarge({super.key})
       : size = null,
-        type = GutterType.extraLarge;
+        type = GutterType.extraLarge,
+        scaleFactor = null;
 
   /// The type of gutter to create.
   final GutterType type;
@@ -43,9 +51,32 @@ class Gutter extends StatelessWidget {
   /// The size of the gap.
   final double? size;
 
+  /// The scale factor to apply to the gutter size.
+  final double? scaleFactor;
+
   @override
   Widget build(BuildContext context) {
-    return Gap(size: size, type: type);
+    return AxisAware(
+      key: key,
+      builder: (BuildContext context, Orientation orientation) {
+        final double gapSize = size != null && scaleFactor != null
+            ? size! * scaleFactor!
+            : size ?? context.gutter(type: type, scaleFactor: scaleFactor);
+        if (type == GutterType.expand) {
+          return Expanded(
+            child: SizedBox(
+              width: orientation == Orientation.landscape ? gapSize : null,
+              height: orientation != Orientation.portrait ? null : gapSize,
+            ),
+          );
+        } else {
+          return SizedBox(
+            width: orientation == Orientation.landscape ? gapSize : null,
+            height: orientation != Orientation.portrait ? null : gapSize,
+          );
+        }
+      },
+    );
   }
 }
 

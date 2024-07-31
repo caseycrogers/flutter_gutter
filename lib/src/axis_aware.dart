@@ -1,44 +1,12 @@
 import 'package:flutter/material.dart';
 import '../flutter_gutter.dart';
 
-/// Creates a `SizedBox` with a height of size corresponding to the layout axis
-/// of the first `Scrollable`, `Row` or `Column` above this widget.
-class Gap extends StatelessWidget {
-  /// Creates a new [Gap] widget.
-  const Gap({super.key, required this.type, this.size});
+/// Axis-aware widget that provides the orientation.
+class AxisAware extends StatelessWidget {
+  /// Creates a new [AxisAware] widget.
+  const AxisAware({super.key, required this.builder});
 
-  /// The type of gutter to create.
-  final GutterType type;
-
-  /// The size of the gutter.
-  final double? size;
-
-  @override
-  Widget build(BuildContext context) {
-    return _AxisAware(
-      builder: (BuildContext context, Orientation orientation) {
-        final double gapSize = size ?? context.gutter(type: type);
-        if (type == GutterType.expand) {
-          return Expanded(
-            child: SizedBox(
-              width: orientation == Orientation.landscape ? gapSize : null,
-              height: orientation != Orientation.portrait ? null : gapSize,
-            ),
-          );
-        } else {
-          return SizedBox(
-            width: orientation == Orientation.landscape ? gapSize : null,
-            height: orientation != Orientation.portrait ? null : gapSize,
-          );
-        }
-      },
-    );
-  }
-}
-
-class _AxisAware extends StatelessWidget {
-  const _AxisAware({required this.builder});
-
+  /// The builder function that receives the orientation.
   final OrientationWidgetBuilder builder;
 
   @override
