@@ -15,6 +15,12 @@ class Gutter extends StatelessWidget {
     this.scaleFactor,
   });
 
+  /// The spacing used on small screens according to Material Design's
+  static const double materialSpacingSmall = 16.0;
+
+  /// The spacing used on medium and large screens according to Material Design's
+  static const double materialSpacingMediumAndUp = 24.0;
+
   /// Creates a new [Gutter] widget with a tiny size.
   const Gutter.tiny({super.key})
       : size = null,

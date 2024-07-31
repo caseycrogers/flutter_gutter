@@ -31,17 +31,17 @@ extension BreakpointExtensions on BuildContext {
     if (Breakpoints.small.isActive(this)) {
       // Use the compact screen values.
       // See: https://m3.material.io/foundations/layout/applying-layout/compact
-      return 16;
+      return Gutter.materialSpacingSmall;
     } else if (Breakpoints.medium.isActive(this)) {
       // Use the medium/expanded screen values.
       // See: https://m3.material.io/foundations/layout/applying-layout/medium
-      return 24;
+      return Gutter.materialSpacingMediumAndUp;
     } else if (Breakpoints.large.isActive(this)) {
       // Use the large screen values.
       // See: https://m3.material.io/foundations/layout/applying-layout/large-extra-large
-      return 24;
+      return Gutter.materialSpacingMediumAndUp;
     } else {
-      return 16;
+      return Gutter.materialSpacingSmall;
     }
   }
 }
