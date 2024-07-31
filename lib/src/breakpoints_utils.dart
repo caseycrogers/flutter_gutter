@@ -10,7 +10,7 @@ extension BreakpointExtensions on BuildContext {
   double get margin => materialSpacing;
 
   /// The size according to Material Design's with a specified [GutterType].
-  double spacing(GutterType type) {
+  double gutter({GutterType type = GutterType.medium}) {
     switch (type) {
       case GutterType.tiny:
         return materialSpacing / 4;
@@ -42,5 +42,23 @@ extension BreakpointExtensions on BuildContext {
     } else {
       return 16;
     }
+  }
+}
+
+/// Extension to add a gutter between the items of an iterable.
+extension SeparatedIterable on Iterable<Widget> {
+  /// Allows to insert a [Gutter] between the items of the iterable.
+  List<Widget> withGutter({Gutter gutter = const Gutter.medium()}) {
+    final List<Widget> result = <Widget>[];
+    final Iterator<Widget> iterator = this.iterator;
+    if (iterator.moveNext()) {
+      result.add(iterator.current);
+      while (iterator.moveNext()) {
+        result
+          ..add(gutter)
+          ..add(iterator.current);
+      }
+    }
+    return result;
   }
 }
