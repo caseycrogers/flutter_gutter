@@ -16,16 +16,28 @@ Gutters and margins:
 2. Size the gap according to the current screen size and Material Design's corresponding breakpoint
    definition (small gap on small screens, larger gap on large screens)
 
-`Gutter.tiny`, `Gutter.small`, `Gutter`, `Gutter.large` and `Gutter.extraLarge` all provide gaps that are factors of the base gutter
+`Gutter.tiny`, `Gutter.small`, `Gutter.medium`, `Gutter.large` and `Gutter.extraLarge` all provide gaps that are factors of the base gutter
 size for situations where larger or smaller gaps are more appropriate. `Gutter.expand` can be used to expand the Gutter on the crossAxis.
+The default sizing is used on: `Gutter` or `Gutter.medium`.
 
 For more flexibility, you can also use the provided extension on `BuildContext` to reference the
 gutter and margin sizes directly (`context.gutter`, `context.margin`) or create a `Gap` with a
 manually set size.
 
-You can us `Gutter` with other packages using `GutterConfiguration` and `widgetToAxis` (see example).
+You can use `Gutter` with other packages using `GutterConfiguration` and `widgetToAxis` (see example).
 
 You can use `AdaptiveGutter` to set a `Gutter` per screen size breakpoint.
+
+On Iterable Widgets you can set a Gutter on every item:
+
+```dart
+<Widget>[
+    const Text('Test1'),
+    const Text('Test2'),
+    const Text('Test3'),
+  ].withGutter() // Optional parameter to set which Gutter size you want to use
+
+```
 
 ## Supported Widgets
 

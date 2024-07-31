@@ -53,14 +53,14 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const Text('Button tapped'),
-              const GutterSmall(),
+              const Gutter.small(),
               Text(
                 _counter.toString(),
                 style: Theme.of(context).textTheme.displayMedium,
               ),
-              const GutterSmall(),
+              const Gutter.medium(),
               const Text('times'),
-            ],
+            ].withGutter(),
           ),
         ),
       ),
