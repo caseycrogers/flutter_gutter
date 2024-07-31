@@ -24,19 +24,21 @@ class AdaptiveGutter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SlotLayout(config: <Breakpoint, SlotLayoutConfig>{
-      Breakpoints.small: SlotLayout.from(
-        key: const Key('small'),
-        builder: (_) => small,
-      ),
-      Breakpoints.medium: SlotLayout.from(
-        key: const Key('medium'),
-        builder: (_) => medium,
-      ),
-      Breakpoints.large: SlotLayout.from(
-        key: const Key('large'),
-        builder: (_) => large,
-      ),
-    });
+    return SlotLayout(
+      config: <Breakpoint, SlotLayoutConfig>{
+        Breakpoints.small: SlotLayout.from(
+          key: const Key('small'),
+          builder: (_) => small,
+        ),
+        Breakpoints.medium: SlotLayout.from(
+          key: const Key('medium'),
+          builder: (_) => medium,
+        ),
+        Breakpoints.large: SlotLayout.from(
+          key: const Key('large'),
+          builder: (_) => large,
+        ),
+      },
+    );
   }
 }

@@ -4,7 +4,10 @@ import '../flutter_gutter.dart';
 /// Axis-aware widget that provides the orientation.
 class AxisAware extends StatelessWidget {
   /// Creates a new [AxisAware] widget.
-  const AxisAware({super.key, required this.builder});
+  const AxisAware({
+    super.key,
+    required this.builder,
+  });
 
   /// The builder function that receives the orientation.
   final OrientationWidgetBuilder builder;
