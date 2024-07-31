@@ -17,13 +17,15 @@ Gutters and margins:
    definition (small gap on small screens, larger gap on large screens)
 
 `Gutter.tiny`, `Gutter.small`, `Gutter`, `Gutter.large` and `Gutter.extraLarge` all provide gaps that are factors of the base gutter
-size for situations where larger or smaller gaps are more appropriate.
+size for situations where larger or smaller gaps are more appropriate. `Gutter.expand` can be used to expand the Gutter on the crossAxis.
 
 For more flexibility, you can also use the provided extension on `BuildContext` to reference the
 gutter and margin sizes directly (`context.gutter`, `context.margin`) or create a `Gap` with a
 manually set size.
 
 You can us `Gutter` with other packages using `GutterConfiguration` and `widgetToAxis` (see example).
+
+You can use `AdaptiveGutter` to set a `Gutter` per screen size breakpoint.
 
 ## Supported Widgets
 

@@ -1,27 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../flutter_gutter.dart';
-
-/// Type to indicate the size of a gutter.
-enum GutterType {
-  /// A tiny gutter.
-  tiny,
-
-  /// A small gutter.
-  small,
-
-  /// A medium gutter.
-  medium,
-
-  /// A large gutter.
-  large,
-
-  /// An extra large gutter.
-  extraLarge,
-
-  /// An expanded gutter.
-  expand,
-}
 
 /// A gap of the standard gutter size according to Material Design's breakpoints
 /// system.
