@@ -2,7 +2,7 @@
 
 ## [1.1.0] - 07/31/2024
 
-- Add optional size parameter
+- Add optional size and scaleFactor parameters
 - Introduce constructors on Gutter for types like small, large, etc
 - Add Gutter.expand
 - Add extension to add Gutter on Lists
