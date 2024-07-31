@@ -66,9 +66,7 @@ class Gutter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return size != null
-        ? Gap(size: size!)
-        : Gap(size: context.gutter(type: type));
+    return Gap(size: size, type: type);
   }
 }
 
