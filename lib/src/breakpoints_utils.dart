@@ -9,18 +9,18 @@ extension BreakpointExtensions on BuildContext {
   double get margin => materialSpacing;
 
   /// The size according to Material Design's with a specified [GutterType].
-  double gutter({GutterType type = GutterType.medium, double? scaleFactor}) {
+  double gutter({GutterType type = GutterType.medium, double scaleFactor = 0}) {
     switch (type) {
       case GutterType.tiny:
-        return materialSpacing / (scaleFactor ?? 4);
+        return materialSpacing / scaleFactor;
       case GutterType.small:
-        return materialSpacing / (scaleFactor ?? 2);
+        return materialSpacing / scaleFactor;
       case GutterType.medium:
-        return materialSpacing;
+        return materialSpacing * scaleFactor;
       case GutterType.large:
-        return materialSpacing * (scaleFactor ?? 2);
+        return materialSpacing * scaleFactor;
       case GutterType.extraLarge:
-        return materialSpacing * (scaleFactor ?? 4);
+        return materialSpacing * scaleFactor;
       case GutterType.expand:
         return double.infinity;
     }

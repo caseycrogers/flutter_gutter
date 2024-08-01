@@ -12,7 +12,7 @@ class Gutter extends StatelessWidget {
     super.key,
     this.size,
     this.type = GutterType.medium,
-    this.scaleFactor,
+    this.scaleFactor = 0,
   });
 
   /// The spacing used on small screens according to Material Design's
@@ -25,31 +25,31 @@ class Gutter extends StatelessWidget {
   const Gutter.tiny({super.key})
       : size = null,
         type = GutterType.tiny,
-        scaleFactor = null;
+        scaleFactor = 4;
 
   /// Creates a new [Gutter] widget with a small size.
   const Gutter.small({super.key})
       : size = null,
         type = GutterType.small,
-        scaleFactor = null;
+        scaleFactor = 2;
 
   /// Creates a new [Gutter] widget with a medium size.
   const Gutter.medium({super.key})
       : size = null,
         type = GutterType.medium,
-        scaleFactor = null;
+        scaleFactor = 0;
 
   /// Creates a new [Gutter] widget with a large size.
   const Gutter.large({super.key})
       : size = null,
         type = GutterType.large,
-        scaleFactor = null;
+        scaleFactor = 2;
 
   /// Creates a new [Gutter] widget with an extra large size.
   const Gutter.extraLarge({super.key})
       : size = null,
         type = GutterType.extraLarge,
-        scaleFactor = null;
+        scaleFactor = 4;
 
   /// The type of gutter to create.
   final GutterType type;
@@ -58,16 +58,15 @@ class Gutter extends StatelessWidget {
   final double? size;
 
   /// The scale factor to apply to the gutter size.
-  final double? scaleFactor;
+  final double scaleFactor;
 
   @override
   Widget build(BuildContext context) {
     return AxisAware(
       key: key,
       builder: (BuildContext context, Orientation orientation) {
-        final double gapSize = size != null && scaleFactor != null
-            ? size! * scaleFactor!
-            : size ?? context.gutter(type: type, scaleFactor: scaleFactor);
+        final double gapSize =
+            size ?? context.gutter(type: type, scaleFactor: scaleFactor);
         if (type == GutterType.expand) {
           return Expanded(
             child: SizedBox(
