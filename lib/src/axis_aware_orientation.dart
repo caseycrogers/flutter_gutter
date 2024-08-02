@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 import '../flutter_gutter.dart';
 
 /// Axis-aware widget that provides the orientation.
-class AxisAware extends StatelessWidget {
-  /// Creates a new [AxisAware] widget.
-  const AxisAware({
+class AxisAwareOrientation extends StatelessWidget {
+  /// Creates a new [AxisAwareOrientation] widget.
+  const AxisAwareOrientation({
     super.key,
     required this.builder,
   });

@@ -4,7 +4,7 @@ import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 import '../flutter_gutter.dart';
 
 /// A gap of the standard gutter size according to Material Design's breakpoints
-extension BreakpointExtensions on BuildContext {
+extension GutterExtensions on BuildContext {
   /// The margin size according to Material Design's breakpoints system.
   double get margin => materialSpacing;
 
