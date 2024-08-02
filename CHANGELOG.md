@@ -8,6 +8,7 @@
 - Add extension to add Gutter on Lists
 - Migrate to flutter_adaptive_scaffold to remove deprecated package
 - Add AdaptiveGutter that switches Gutter size based on the current breakpoint
+- Add PaddingGutter that adds material padding
 
 ## [1.0.3] - 07/27/2024
 
