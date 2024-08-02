@@ -21,6 +21,21 @@ class Gutter extends StatelessWidget {
   /// The spacing used on medium and large screens according to Material Design's
   static const double materialSpacingMediumAndUp = 24.0;
 
+  /// The default scale factor for a small increase.
+  static const int scaleFactorSmallDefault = 2;
+
+  /// The default scale factor for a medium increase.
+  static const int scaleFactorMediumDefault = 4;
+
+  /// The type of gutter to create.
+  final GutterType type;
+
+  /// The size of the gap.
+  final double? size;
+
+  /// The scale factor to apply to the gutter size.
+  final double scaleFactor;
+
   /// Creates a new [Gutter] widget with a single line size.
   const Gutter.singleLine({super.key})
       : size = 1,
@@ -56,15 +71,6 @@ class Gutter extends StatelessWidget {
   const Gutter.expand({super.key, this.scaleFactor = 1})
       : size = null,
         type = GutterType.expand;
-
-  /// The type of gutter to create.
-  final GutterType type;
-
-  /// The size of the gap.
-  final double? size;
-
-  /// The scale factor to apply to the gutter size.
-  final double scaleFactor;
 
   @override
   Widget build(BuildContext context) {

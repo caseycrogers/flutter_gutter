@@ -12,11 +12,12 @@ extension BreakpointExtensions on BuildContext {
   double gutter({GutterType type = GutterType.medium, double scaleFactor = 1}) {
     return scaleFactor *
         switch (type) {
-          GutterType.tiny => materialSpacing / 4,
-          GutterType.small => materialSpacing / 2,
+          GutterType.tiny => materialSpacing / Gutter.scaleFactorMediumDefault,
+          GutterType.small => materialSpacing / Gutter.scaleFactorSmallDefault,
           GutterType.medium => materialSpacing,
-          GutterType.large => materialSpacing * 2,
-          GutterType.extraLarge => materialSpacing * 4,
+          GutterType.large => materialSpacing * Gutter.scaleFactorSmallDefault,
+          GutterType.extraLarge =>
+            materialSpacing * Gutter.scaleFactorMediumDefault,
           GutterType.expand => double.infinity,
         };
   }
