@@ -12,7 +12,7 @@ class Gutter extends StatelessWidget {
     super.key,
     this.size,
     this.type = GutterType.medium,
-    this.scaleFactor = 0,
+    this.scaleFactor = 1,
   });
 
   /// The spacing used on small screens according to Material Design's
@@ -21,35 +21,41 @@ class Gutter extends StatelessWidget {
   /// The spacing used on medium and large screens according to Material Design's
   static const double materialSpacingMediumAndUp = 24.0;
 
+  /// Creates a new [Gutter] widget with a single line size.
+  const Gutter.singleLine({super.key})
+      : size = 1,
+        type = GutterType.expand,
+        scaleFactor = 1;
+
   /// Creates a new [Gutter] widget with a tiny size.
-  const Gutter.tiny({super.key})
+  const Gutter.tiny({super.key, this.scaleFactor = 1})
       : size = null,
-        type = GutterType.tiny,
-        scaleFactor = 4;
+        type = GutterType.tiny;
 
   /// Creates a new [Gutter] widget with a small size.
-  const Gutter.small({super.key})
+  const Gutter.small({super.key, this.scaleFactor = 1})
       : size = null,
-        type = GutterType.small,
-        scaleFactor = 2;
+        type = GutterType.small;
 
   /// Creates a new [Gutter] widget with a medium size.
-  const Gutter.medium({super.key})
+  const Gutter.medium({super.key, this.scaleFactor = 1})
       : size = null,
-        type = GutterType.medium,
-        scaleFactor = 0;
+        type = GutterType.medium;
 
   /// Creates a new [Gutter] widget with a large size.
-  const Gutter.large({super.key})
+  const Gutter.large({super.key, this.scaleFactor = 1})
       : size = null,
-        type = GutterType.large,
-        scaleFactor = 2;
+        type = GutterType.large;
 
   /// Creates a new [Gutter] widget with an extra large size.
-  const Gutter.extraLarge({super.key})
+  const Gutter.extraLarge({super.key, this.scaleFactor = 1})
       : size = null,
-        type = GutterType.extraLarge,
-        scaleFactor = 4;
+        type = GutterType.extraLarge;
+
+  /// Creates a new [Gutter] widget with an expand size.
+  const Gutter.expand({super.key, this.scaleFactor = 1})
+      : size = null,
+        type = GutterType.expand;
 
   /// The type of gutter to create.
   final GutterType type;
