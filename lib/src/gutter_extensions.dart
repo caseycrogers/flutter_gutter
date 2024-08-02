@@ -9,17 +9,26 @@ extension GutterExtensions on BuildContext {
   double get margin => materialSpacing;
 
   /// The size according to Material Design's with a specified [GutterType].
-  double gutter({GutterType type = GutterType.medium, double scaleFactor = 1}) {
-    return scaleFactor *
-        switch (type) {
-          GutterType.tiny => materialSpacing / Gutter.scaleFactorMediumDefault,
-          GutterType.small => materialSpacing / Gutter.scaleFactorSmallDefault,
-          GutterType.medium => materialSpacing,
-          GutterType.large => materialSpacing * Gutter.scaleFactorSmallDefault,
-          GutterType.extraLarge =>
-            materialSpacing * Gutter.scaleFactorMediumDefault,
-          GutterType.expand => double.infinity,
-        };
+  double gutterSize({
+    GutterType type = GutterType.medium,
+    double? size,
+    double scaleFactor = 1,
+  }) {
+    return size != null
+        ? (size * scaleFactor)
+        : scaleFactor *
+            switch (type) {
+              GutterType.tiny =>
+                materialSpacing / Gutter.scaleFactorMediumDefault,
+              GutterType.small =>
+                materialSpacing / Gutter.scaleFactorSmallDefault,
+              GutterType.medium => materialSpacing,
+              GutterType.large =>
+                materialSpacing * Gutter.scaleFactorSmallDefault,
+              GutterType.extraLarge =>
+                materialSpacing * Gutter.scaleFactorMediumDefault,
+              GutterType.expand => double.infinity,
+            };
   }
 
   /// The size according to Material Design's breakpoints system.

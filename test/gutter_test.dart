@@ -24,8 +24,12 @@ void main() {
 
     final Element context = tester.element(find.byType(MaterialApp));
     final Gutter gutterWidget = tester.widget<Gutter>(find.byType(Gutter));
-    final double expectedSize = Gutter.calculateSize(context, gutterWidget.size,
-        gutterWidget.type, gutterWidget.scaleFactor);
+
+    final double expectedSize = context.gutterSize(
+      type: gutterWidget.type,
+      size: gutterWidget.size,
+      scaleFactor: gutterWidget.scaleFactor,
+    );
 
     if (gutterWidget.type == GutterType.expand) {
       // Special handling for Gutter.expand
