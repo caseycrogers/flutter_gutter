@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 import 'package:flutter_gutter/flutter_gutter.dart';
 import 'package:flutter_test/flutter_test.dart';
 
