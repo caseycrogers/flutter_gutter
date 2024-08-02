@@ -42,9 +42,9 @@ class GutterPadding extends Gutter {
         bottom = vertical;
 
   /// Creates a new [GutterPadding] widget with uniform padding.
-  const GutterPadding.all(
-    double? padding, {
+  const GutterPadding.all({
     super.key,
+    double? padding,
     this.child,
     super.type = GutterType.medium,
     super.scaleFactor = 1,
