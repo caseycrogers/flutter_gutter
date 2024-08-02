@@ -70,27 +70,27 @@ class GutterPadding extends Gutter {
 
   @override
   Widget build(BuildContext context) {
-    final double gapSize =
-        Gutter.calculateGapSize(context, size, type, scaleFactor);
+    final double gutterSize =
+        Gutter.calculateSize(context, size, type, scaleFactor);
 
     return Padding(
       padding: EdgeInsets.only(
         left: left != null
-            ? Gutter.calculateGapSize(
+            ? Gutter.calculateSize(
                 context, left!.size, left!.type, left!.scaleFactor)
-            : gapSize,
+            : gutterSize,
         top: top != null
-            ? Gutter.calculateGapSize(
+            ? Gutter.calculateSize(
                 context, top!.size, top!.type, top!.scaleFactor)
-            : gapSize,
+            : gutterSize,
         right: right != null
-            ? Gutter.calculateGapSize(
+            ? Gutter.calculateSize(
                 context, right!.size, right!.type, right!.scaleFactor)
-            : gapSize,
+            : gutterSize,
         bottom: bottom != null
-            ? Gutter.calculateGapSize(
+            ? Gutter.calculateSize(
                 context, bottom!.size, bottom!.type, bottom!.scaleFactor)
-            : gapSize,
+            : gutterSize,
       ),
       child: child,
     );

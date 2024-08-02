@@ -30,7 +30,7 @@ class Gutter extends StatelessWidget {
   /// The type of gutter to create.
   final GutterType type;
 
-  /// The size of the gap.
+  /// The size of the [Gutter].
   final double? size;
 
   /// The scale factor to apply to the gutter size.
@@ -77,20 +77,20 @@ class Gutter extends StatelessWidget {
     return AxisAwareOrientation(
       key: key,
       builder: (BuildContext context, Orientation orientation) {
-        final double gapSize =
-            calculateGapSize(context, size, type, scaleFactor);
+        final double gutterSize =
+            calculateSize(context, size, type, scaleFactor);
 
         if (type == GutterType.expand) {
           return Expanded(
             child: SizedBox(
-              width: orientation == Orientation.landscape ? gapSize : null,
-              height: orientation != Orientation.portrait ? null : gapSize,
+              width: orientation == Orientation.landscape ? gutterSize : null,
+              height: orientation != Orientation.portrait ? null : gutterSize,
             ),
           );
         } else {
           return SizedBox(
-            width: orientation == Orientation.landscape ? gapSize : null,
-            height: orientation != Orientation.portrait ? null : gapSize,
+            width: orientation == Orientation.landscape ? gutterSize : null,
+            height: orientation != Orientation.portrait ? null : gutterSize,
           );
         }
       },
@@ -98,7 +98,7 @@ class Gutter extends StatelessWidget {
   }
 
   /// calculates the gap size based on the size, type and scale factor.
-  static double calculateGapSize(
+  static double calculateSize(
       BuildContext context, double? size, GutterType type, double scaleFactor) {
     return size != null
         ? (size * scaleFactor)

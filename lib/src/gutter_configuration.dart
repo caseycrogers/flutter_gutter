@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-/// An inherited widget that sets custom [Gutter] and [Gap] behavior.
+/// An inherited widget that sets custom [Gutter] and [GutterPadding] behavior.
 class GutterConfigurationData {
   /// Creates a new [GutterConfigurationData] instance.
   const GutterConfigurationData({
