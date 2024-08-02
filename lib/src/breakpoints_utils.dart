@@ -1,40 +1,62 @@
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 
-extension Breakpoints on BuildContext {
-  /// All the breakpoints according to Material Design's breakpoint system.
-  BreakpointSystemEntry get breakpoints => getBreakpointEntry(this);
+import '../flutter_gutter.dart';
 
-  /// Double the default gutter size.
-  double get gutterLarge => (_material3Value ?? breakpoints.gutter) * 2;
-
-  /// The gutter size according to Material Design's breakpoints system.
-  double get gutter => _material3Value ?? breakpoints.gutter;
-
-  /// Half the default gutter size.
-  double get gutterSmall => (_material3Value ?? breakpoints.gutter) / 2;
-
-  /// A quarter the default gutter size.
-  double get gutterTiny => (_material3Value ?? breakpoints.gutter) / 4;
-
+/// A gap of the standard gutter size according to Material Design's breakpoints
+extension BreakpointExtensions on BuildContext {
   /// The margin size according to Material Design's breakpoints system.
-  double get margin => _material3Value ?? breakpoints.margin;
+  double get margin => materialSpacing;
 
-  int get columns => breakpoints.columns;
+  /// The size according to Material Design's with a specified [GutterType].
+  double gutter({GutterType type = GutterType.medium, double scaleFactor = 1}) {
+    return scaleFactor *
+        switch (type) {
+          GutterType.tiny => materialSpacing / Gutter.scaleFactorMediumDefault,
+          GutterType.small => materialSpacing / Gutter.scaleFactorSmallDefault,
+          GutterType.medium => materialSpacing,
+          GutterType.large => materialSpacing * Gutter.scaleFactorSmallDefault,
+          GutterType.extraLarge =>
+            materialSpacing * Gutter.scaleFactorMediumDefault,
+          GutterType.expand => double.infinity,
+        }
+      ..floor();
+  }
 
-  double? get _material3Value {
-    if (!Theme.of(this).useMaterial3) {
-      return null;
-    }
-    final Size size = MediaQuery.of(this).size;
-    if (size.width < 600 || size.height < 600) {
+  /// The size according to Material Design's breakpoints system.
+  double get materialSpacing {
+    if (Breakpoints.small.isActive(this)) {
       // Use the compact screen values.
       // See: https://m3.material.io/foundations/layout/applying-layout/compact
-      return 16;
+      return Gutter.materialSpacingSmall;
+    } else if (Breakpoints.medium.isActive(this)) {
+      // Use the medium/expanded screen values.
+      // See: https://m3.material.io/foundations/layout/applying-layout/medium
+      return Gutter.materialSpacingMediumAndUp;
+    } else if (Breakpoints.large.isActive(this)) {
+      // Use the large screen values.
+      // See: https://m3.material.io/foundations/layout/applying-layout/large-extra-large
+      return Gutter.materialSpacingMediumAndUp;
+    } else {
+      return Gutter.materialSpacingSmall;
     }
-    // Use the medium/expanded screen values.
-    // See: https://m3.material.io/foundations/layout/applying-layout/medium
-    return 24;
+  }
+}
+
+/// Extension to add a gutter between the items of an iterable.
+extension SeparatedIterable on Iterable<Widget> {
+  /// Allows to insert a [Gutter] between the items of the iterable.
+  List<Widget> withGutter({Gutter gutter = const Gutter.medium()}) {
+    final List<Widget> result = <Widget>[];
+    final Iterator<Widget> iterator = this.iterator;
+    if (iterator.moveNext()) {
+      result.add(iterator.current);
+      while (iterator.moveNext()) {
+        result
+          ..add(gutter)
+          ..add(iterator.current);
+      }
+    }
+    return result;
   }
 }

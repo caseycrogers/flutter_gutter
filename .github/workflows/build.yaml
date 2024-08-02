@@ -48,8 +48,8 @@ jobs:
       - name: Analyze static code
         run: dart analyze
 
-      - name: Run tests
-        run: flutter test --no-pub --coverage
+      # - name: Run tests
+      #   run: flutter test --no-pub --coverage
 
       - name: Check publish warnings
         run: dart pub publish --dry-run

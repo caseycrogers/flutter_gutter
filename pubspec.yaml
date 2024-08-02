@@ -2,21 +2,27 @@ name: flutter_gutter
 description: Get your UI out of the gutter! Ensure all visual gaps between your widgets are consistent, adapted to the
   axis direction, and respond to screen size.
 repository: https://github.com/caseycrogers/flutter_gutter
+issue_tracker: https://github.com/caseycrogers/flutter_gutter/issues
+homepage: https://github.com/caseycrogers/flutter_gutter
+topics:
+  - gap
+  - gutter
 
-version: 1.0.3
+version: 2.0.0
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ^3.3.0
+  flutter: ">=3.19.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  adaptive_breakpoints: ^0.1.6
+  flutter_adaptive_scaffold: ^0.1.11+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
