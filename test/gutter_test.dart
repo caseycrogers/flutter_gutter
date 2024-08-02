@@ -23,10 +23,11 @@ void main() {
     ));
 
     final Element context = tester.element(find.byType(MaterialApp));
-    final double expectedSize = Gutter.calculateSize(
-        context, gutter.size, gutter.type, gutter.scaleFactor);
+    final Gutter gutterWidget = tester.widget<Gutter>(find.byType(Gutter));
+    final double expectedSize = Gutter.calculateSize(context, gutterWidget.size,
+        gutterWidget.type, gutterWidget.scaleFactor);
 
-    if (gutter.type == GutterType.expand) {
+    if (gutterWidget.type == GutterType.expand) {
       // Special handling for Gutter.expand
       final Size scaffoldSize = tester.getSize(find.byType(Scaffold));
       final Size gutterSize = tester.getSize(find.byType(Gutter));
