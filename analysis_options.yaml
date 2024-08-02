@@ -14,4 +14,5 @@ linter:
     omit_local_variable_types: false
     public_member_api_docs: true
     directives_ordering: true
+    eol_at_end_of_file: true
     

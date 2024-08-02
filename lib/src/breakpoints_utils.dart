@@ -19,7 +19,8 @@ extension BreakpointExtensions on BuildContext {
           GutterType.extraLarge =>
             materialSpacing * Gutter.scaleFactorMediumDefault,
           GutterType.expand => double.infinity,
-        };
+        }
+      ..floor();
   }
 
   /// The size according to Material Design's breakpoints system.

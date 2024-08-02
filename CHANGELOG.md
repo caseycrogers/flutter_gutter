@@ -3,12 +3,13 @@
 ## [2.0.0] - 07/31/2024
 
 - Add optional size and scaleFactor parameters
-- Introduce constructors on Gutter for types like small, large, etc
-- Add Gutter.expand
+- Introduce constructors on Gutter: `Gutter.tiny`, `Gutter.small`, `Gutter.medium`, `Gutter.large`, `Gutter.extraLarge`
+- Add `Gutter.expand` and `Gutter.singleLine`
 - Add extension to add Gutter on Lists
-- Migrate to flutter_adaptive_scaffold to remove deprecated package
-- Add AdaptiveGutter that switches Gutter size based on the current breakpoint
-- Add PaddingGutter that adds material padding
+- Migrate to `flutter_adaptive_scaffold` to remove deprecated package
+- Add `AdaptiveGutter` that switches `Gutter` size based on the current breakpoint
+- Add `PaddingGutter` that adds material padding
+- BREAKING CHANGE: Removal of `Gap`
 
 ## [1.0.3] - 07/27/2024
 
