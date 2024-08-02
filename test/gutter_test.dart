@@ -27,8 +27,15 @@ void main() {
     final double expectedSize = Gutter.calculateSize(
         context, gutter.size, gutter.type, gutter.scaleFactor);
 
-    final Size gutterSize = tester.getSize(find.byType(Gutter));
-    expect(gutterSize.height, expectedSize);
+    if (gutter.type == GutterType.expand) {
+      // Special handling for Gutter.expand
+      final Size scaffoldSize = tester.getSize(find.byType(Scaffold));
+      final Size gutterSize = tester.getSize(find.byType(Gutter));
+      expect(gutterSize.height, scaffoldSize.height);
+    } else {
+      final Size gutterSize = tester.getSize(find.byType(Gutter));
+      expect(gutterSize.height, expectedSize);
+    }
   }
 
   // Tests for Gutter.tiny
@@ -155,5 +162,50 @@ void main() {
       'should apply correct gap size for singleLine gutter on large screens',
       (WidgetTester tester) async {
     await testGutterSize(tester, large, const Gutter.singleLine());
+  });
+
+  // Tests with custom size and scaleFactor
+  testWidgets(
+      'should apply correct custom size for tiny gutter on small screens',
+      (WidgetTester tester) async {
+    await testGutterSize(tester, small, const Gutter.tiny(scaleFactor: 2));
+  });
+
+  testWidgets(
+      'should apply correct custom size for small gutter on medium screens',
+      (WidgetTester tester) async {
+    await testGutterSize(tester, medium, const Gutter.small(scaleFactor: 1.5));
+  });
+
+  testWidgets(
+      'should apply correct custom size for medium gutter on large screens',
+      (WidgetTester tester) async {
+    await testGutterSize(tester, large, const Gutter.medium(scaleFactor: 3));
+  });
+
+  testWidgets(
+      'should apply correct custom size for gutter with size on medium screens',
+      (WidgetTester tester) async {
+    await testGutterSize(
+        tester, medium, const Gutter(size: 20, type: GutterType.extraLarge));
+  });
+
+  testWidgets(
+      'should apply correct custom size for gutter with size on medium screens',
+      (WidgetTester tester) async {
+    await testGutterSize(
+        tester, medium, const Gutter(size: 30, scaleFactor: 1.2));
+  });
+
+  testWidgets(
+      'should apply correct custom size for expand gutter with size on large screens',
+      (WidgetTester tester) async {
+    await testGutterSize(tester, large, const Gutter(size: 40, scaleFactor: 2));
+  });
+
+  testWidgets(
+      'should apply correct custom size for gutter with size on small screens',
+      (WidgetTester tester) async {
+    await testGutterSize(tester, small, const Gutter(size: 10));
   });
 }
