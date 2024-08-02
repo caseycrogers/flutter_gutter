@@ -271,7 +271,7 @@ class GutterConfigurationData {
   int get hashCode => widgetToAxis.hashCode;
 }
 
-/// An inherited widget that sets custom [Gutter] and [Gap] behavior.
+/// An inherited widget that sets custom [Gutter] and [GutterPadding] behavior.
 class GutterConfiguration extends InheritedWidget {
   /// Creates a new [GutterConfiguration] instance.
   const GutterConfiguration({
