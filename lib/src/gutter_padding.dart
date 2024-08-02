@@ -11,6 +11,7 @@ class GutterPadding extends Gutter {
     super.size,
     super.type = GutterType.medium,
     super.scaleFactor = 1,
+    required Gutter all,
   })  : left = null,
         top = null,
         right = null,
@@ -20,10 +21,10 @@ class GutterPadding extends Gutter {
   const GutterPadding.only({
     super.key,
     this.child,
-    this.left = 0,
-    this.top = 0,
-    this.right = 0,
-    this.bottom = 0,
+    this.left,
+    this.top,
+    this.right,
+    this.bottom,
     super.type = GutterType.medium,
     super.scaleFactor = 1,
   });
@@ -32,8 +33,8 @@ class GutterPadding extends Gutter {
   const GutterPadding.symmetric({
     super.key,
     this.child,
-    double? vertical = 0,
-    double? horizontal = 0,
+    Gutter? vertical,
+    Gutter? horizontal,
     super.type = GutterType.medium,
     super.scaleFactor = 1,
   })  : left = horizontal,
@@ -44,7 +45,7 @@ class GutterPadding extends Gutter {
   /// Creates a new [GutterPadding] widget with uniform padding.
   const GutterPadding.all({
     super.key,
-    double? padding,
+    Gutter? padding,
     this.child,
     super.type = GutterType.medium,
     super.scaleFactor = 1,
@@ -57,16 +58,16 @@ class GutterPadding extends Gutter {
   final Widget? child;
 
   /// The offset from the left.
-  final double? left;
+  final Gutter? left;
 
   /// The offset from the right.
-  final double? right;
+  final Gutter? right;
 
   /// The offset from the top.
-  final double? top;
+  final Gutter? top;
 
   /// The offset from the bottom.
-  final double? bottom;
+  final Gutter? bottom;
 
   @override
   Widget build(BuildContext context) {
@@ -75,10 +76,22 @@ class GutterPadding extends Gutter {
 
     return Padding(
       padding: EdgeInsets.only(
-        left: left ?? gapSize,
-        top: top ?? gapSize,
-        right: right ?? gapSize,
-        bottom: bottom ?? gapSize,
+        left: left != null
+            ? Gutter.calculateGapSize(
+                context, left!.size, left!.type, left!.scaleFactor)
+            : gapSize,
+        top: top != null
+            ? Gutter.calculateGapSize(
+                context, top!.size, top!.type, top!.scaleFactor)
+            : gapSize,
+        right: right != null
+            ? Gutter.calculateGapSize(
+                context, right!.size, right!.type, right!.scaleFactor)
+            : gapSize,
+        bottom: bottom != null
+            ? Gutter.calculateGapSize(
+                context, bottom!.size, bottom!.type, bottom!.scaleFactor)
+            : gapSize,
       ),
       child: child,
     );
