@@ -11,7 +11,6 @@ class GutterPadding extends Gutter {
     super.size,
     super.type = GutterType.medium,
     super.scaleFactor = 1,
-    required Gutter all,
   })  : left = null,
         top = null,
         right = null,
@@ -45,14 +44,14 @@ class GutterPadding extends Gutter {
   /// Creates a new [GutterPadding] widget with uniform padding.
   const GutterPadding.all({
     super.key,
-    Gutter? padding,
+    Gutter? value,
     this.child,
     super.type = GutterType.medium,
     super.scaleFactor = 1,
-  })  : left = padding,
-        top = padding,
-        right = padding,
-        bottom = padding;
+  })  : left = value,
+        top = value,
+        right = value,
+        bottom = value;
 
   /// The child widget.
   final Widget? child;
