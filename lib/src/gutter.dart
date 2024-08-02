@@ -10,8 +10,8 @@ class Gutter extends StatelessWidget {
   /// Creates a new [Gutter] widget.
   const Gutter({
     super.key,
-    this.size,
     this.type = GutterType.medium,
+    this.size,
     this.scaleFactor = 1,
   });
 
@@ -38,39 +38,39 @@ class Gutter extends StatelessWidget {
 
   /// Creates a new [Gutter] widget with a single line size.
   const Gutter.singleLine({super.key})
-      : size = 1,
-        type = GutterType.expand,
+      : type = GutterType.expand,
+        size = 1,
         scaleFactor = 1;
 
   /// Creates a new [Gutter] widget with a tiny size.
   const Gutter.tiny({super.key, this.scaleFactor = 1})
-      : size = null,
-        type = GutterType.tiny;
+      : type = GutterType.tiny,
+        size = null;
 
   /// Creates a new [Gutter] widget with a small size.
   const Gutter.small({super.key, this.scaleFactor = 1})
-      : size = null,
-        type = GutterType.small;
+      : type = GutterType.small,
+        size = null;
 
   /// Creates a new [Gutter] widget with a medium size.
   const Gutter.medium({super.key, this.scaleFactor = 1})
-      : size = null,
-        type = GutterType.medium;
+      : type = GutterType.medium,
+        size = null;
 
   /// Creates a new [Gutter] widget with a large size.
   const Gutter.large({super.key, this.scaleFactor = 1})
-      : size = null,
-        type = GutterType.large;
+      : type = GutterType.large,
+        size = null;
 
   /// Creates a new [Gutter] widget with an extra large size.
   const Gutter.extraLarge({super.key, this.scaleFactor = 1})
-      : size = null,
-        type = GutterType.extraLarge;
+      : type = GutterType.extraLarge,
+        size = null;
 
   /// Creates a new [Gutter] widget with an expand size.
   const Gutter.expand({super.key, this.scaleFactor = 1})
-      : size = null,
-        type = GutterType.expand;
+      : type = GutterType.expand,
+        size = null;
 
   @override
   Widget build(BuildContext context) {
