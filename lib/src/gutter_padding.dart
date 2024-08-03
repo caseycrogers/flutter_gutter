@@ -45,8 +45,8 @@ class GutterPadding extends Gutter {
   const GutterPadding.all({
     super.key,
     this.child,
-    double? value,
     super.type = GutterType.medium,
+    double? value,
     super.scaleFactor = 1,
   })  : left = value,
         top = value,
