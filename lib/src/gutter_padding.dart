@@ -33,8 +33,8 @@ class GutterPadding extends Gutter {
     super.key,
     this.child,
     super.type = GutterType.medium,
-    double? vertical,
-    double? horizontal,
+    Gutter? vertical,
+    Gutter? horizontal,
     super.scaleFactor = 1,
   })  : left = horizontal,
         top = vertical,
@@ -46,7 +46,7 @@ class GutterPadding extends Gutter {
     super.key,
     this.child,
     super.type = GutterType.medium,
-    double? value,
+    Gutter? value,
     super.scaleFactor = 1,
   })  : left = value,
         top = value,
@@ -57,16 +57,16 @@ class GutterPadding extends Gutter {
   final Widget? child;
 
   /// The offset from the left.
-  final double? left;
+  final Gutter? left;
 
   /// The offset from the right.
-  final double? right;
+  final Gutter? right;
 
   /// The offset from the top.
-  final double? top;
+  final Gutter? top;
 
   /// The offset from the bottom.
-  final double? bottom;
+  final Gutter? bottom;
 
   @override
   Widget build(BuildContext context) {
@@ -78,10 +78,28 @@ class GutterPadding extends Gutter {
 
     return Padding(
       padding: EdgeInsets.only(
-        left: left ?? gutterSize,
-        top: top ?? gutterSize,
-        right: right ?? gutterSize,
-        bottom: bottom ?? gutterSize,
+        left: left != null
+            ? context.gutterSize(
+                type: left!.type,
+                size: left!.size,
+                scaleFactor: left!.scaleFactor)
+            : gutterSize,
+        top: top != null
+            ? context.gutterSize(
+                type: top!.type, size: top!.size, scaleFactor: top!.scaleFactor)
+            : gutterSize,
+        right: right != null
+            ? context.gutterSize(
+                type: right!.type,
+                size: right!.size,
+                scaleFactor: right!.scaleFactor)
+            : gutterSize,
+        bottom: bottom != null
+            ? context.gutterSize(
+                type: bottom!.type,
+                size: bottom!.size,
+                scaleFactor: bottom!.scaleFactor)
+            : gutterSize,
       ),
       child: child,
     );
