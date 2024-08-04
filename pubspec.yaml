@@ -7,6 +7,9 @@ homepage: https://github.com/caseycrogers/flutter_gutter
 topics:
   - gap
   - gutter
+  - padding
+  - adaptive
+  - spacing
 
 version: 2.0.0
 

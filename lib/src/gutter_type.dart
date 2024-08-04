@@ -3,22 +3,29 @@ import '../flutter_gutter.dart';
 /// Type to indicate the size of a gutter.
 enum GutterType {
   /// A tiny gutter.
-  tiny,
+  tiny(Gutter.scaleFactorDefaultMedium),
 
   /// A small gutter.
-  small,
+  small(Gutter.scaleFactorDefaultSmall),
 
   /// A medium gutter.
-  medium,
+  medium(Gutter.scaleFactorDefault),
 
   /// A large gutter.
-  large,
+  large(Gutter.scaleFactorDefaultSmall),
 
   /// An extra large gutter.
-  extraLarge,
+  extraLarge(Gutter.scaleFactorDefaultMedium),
 
   /// An expanded gutter.
-  expand,
+  expand(Gutter.scaleFactorDefault);
+
+  const GutterType(
+    this.scaleFactor,
+  );
+
+  /// The scale factor to apply to the gutter size.
+  final double scaleFactor;
 }
 
 /// Extension to convert [GutterType].
@@ -37,7 +44,7 @@ extension GutterTypeExtensions on GutterType {
       case GutterType.extraLarge:
         return const Gutter.extraLarge();
       case GutterType.expand:
-        return const Gutter(size: double.infinity);
+        return const Gutter.expand();
     }
   }
 }
