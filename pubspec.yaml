@@ -8,6 +8,8 @@ topics:
   - gap
   - gutter
   - padding
+  - adaptive
+  - spacing
 
 version: 2.0.0
 

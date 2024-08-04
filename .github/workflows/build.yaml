@@ -39,6 +39,9 @@ jobs:
           architecture: x64
           cache: true
 
+      - name: Disable flutter cli animations
+        run: flutter config --no-cli-animations
+
       - name: Install dependencies
         run: dart pub get
 
