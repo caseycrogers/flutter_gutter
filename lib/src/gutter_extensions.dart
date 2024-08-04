@@ -46,15 +46,15 @@ extension GutterExtensions on BuildContext {
         ? (size * scaleFactor)
         : scaleFactor *
             switch (type) {
-              GutterType.tiny =>
-                materialSpacing / Gutter.scaleFactorMediumDefault,
+              GutterType.tiny => materialSpacing / GutterType.tiny.scaleFactor,
               GutterType.small =>
-                materialSpacing / Gutter.scaleFactorSmallDefault,
-              GutterType.medium => materialSpacing,
+                materialSpacing / GutterType.small.scaleFactor,
+              GutterType.medium =>
+                materialSpacing * GutterType.medium.scaleFactor,
               GutterType.large =>
-                materialSpacing * Gutter.scaleFactorSmallDefault,
+                materialSpacing * GutterType.large.scaleFactor,
               GutterType.extraLarge =>
-                materialSpacing * Gutter.scaleFactorMediumDefault,
+                materialSpacing * GutterType.extraLarge.scaleFactor,
               GutterType.expand => double.infinity,
             };
   }
