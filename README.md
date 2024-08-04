@@ -21,7 +21,7 @@ size for situations where larger or smaller gaps are more appropriate. `Gutter.e
 The default sizing is used on: `Gutter` or `Gutter.medium`.
 
 For more flexibility, you can also use the provided extension on `BuildContext` to reference the
-gutter and margin sizes directly (`context.gutter`, `context.margin`).
+gutter and margin sizes directly (`context.gutter`, `context.gutterLarge`, `context.margin`, etc).
 
 It is possible to manually create a `Gutter` with a specific `size` or `scaleFactor`.
 
@@ -47,6 +47,18 @@ On Iterable Widgets you can set a Gutter on every item:
     const Text('Test2'),
     const Text('Test3'),
   ].withGutter() // Optional parameter to set which Gutter size you want to use
+```
+
+Using `GutterPadding` you can add a `Widget` that insets its child by the material padding or the given padding.
+
+```dart
+const GutterPadding.only(
+    left: Gutter.medium(),
+    right: Gutter.small(),
+    top: Gutter(size: 20),
+    bottom: Gutter.medium(scaleFactor: 3),
+    child: ColoredBox(color: Colors.blue, child: Text('Child')),
+)
 ```
 
 You can use `Gutter` with other packages using `GutterConfiguration` and `widgetToAxis` (see example).
