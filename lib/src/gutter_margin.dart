@@ -4,5 +4,9 @@ import '../flutter_gutter.dart';
 /// system
 class GutterMargin extends Gutter {
   /// Creates a new [GutterMargin] widget.
-  const GutterMargin({super.key, super.type, super.size, super.scaleFactor});
+  const GutterMargin({super.key, super.type, super.scaleFactor});
+
+  /// Creates a new [GutterMargin] widget with a specified size.
+  const GutterMargin.from({super.key, super.size, super.scaleFactor})
+      : super.from();
 }

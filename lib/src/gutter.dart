@@ -11,9 +11,8 @@ class Gutter extends StatelessWidget {
   const Gutter({
     super.key,
     this.type = GutterType.medium,
-    this.size,
     this.scaleFactor = 1,
-  });
+  }) : size = null;
 
   /// The spacing used on small screens according to Material Design's
   /// See: https://m3.material.io/foundations/layout/applying-layout/compact
@@ -41,11 +40,9 @@ class Gutter extends StatelessWidget {
   /// The scale factor to apply to the gutter size.
   final double scaleFactor;
 
-  /// Creates a new [Gutter] widget with a single line size.
-  const Gutter.singleLine({super.key})
-      : type = GutterType.expand,
-        size = 1,
-        scaleFactor = 1;
+  /// Creates a new [Gutter] widget from a size and scaleFactor.
+  const Gutter.from({super.key, this.size, this.scaleFactor = 1})
+      : type = GutterType.medium;
 
   /// Creates a new [Gutter] widget with a tiny size.
   const Gutter.tiny({super.key, this.scaleFactor = 1})

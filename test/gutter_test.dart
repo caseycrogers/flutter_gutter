@@ -149,25 +149,6 @@ void main() {
     await testGutterSize(tester, large, const Gutter.expand());
   });
 
-  // Tests for Gutter.singleLine
-  testWidgets(
-      'should apply correct gap size for singleLine gutter on small screens',
-      (WidgetTester tester) async {
-    await testGutterSize(tester, small, const Gutter.singleLine());
-  });
-
-  testWidgets(
-      'should apply correct gap size for singleLine gutter on medium screens',
-      (WidgetTester tester) async {
-    await testGutterSize(tester, medium, const Gutter.singleLine());
-  });
-
-  testWidgets(
-      'should apply correct gap size for singleLine gutter on large screens',
-      (WidgetTester tester) async {
-    await testGutterSize(tester, large, const Gutter.singleLine());
-  });
-
   // Tests with custom size and scaleFactor
   testWidgets(
       'should apply correct custom size for tiny gutter on small screens',
@@ -190,26 +171,26 @@ void main() {
   testWidgets(
       'should apply correct custom size for gutter with size on medium screens',
       (WidgetTester tester) async {
-    await testGutterSize(
-        tester, medium, const Gutter(size: 20, type: GutterType.extraLarge));
+    await testGutterSize(tester, medium, const Gutter.from(size: 20));
   });
 
   testWidgets(
       'should apply correct custom size for gutter with size on medium screens',
       (WidgetTester tester) async {
     await testGutterSize(
-        tester, medium, const Gutter(size: 30, scaleFactor: 1.2));
+        tester, medium, const Gutter.from(size: 30, scaleFactor: 1.2));
   });
 
   testWidgets(
       'should apply correct custom size for expand gutter with size on large screens',
       (WidgetTester tester) async {
-    await testGutterSize(tester, large, const Gutter(size: 40, scaleFactor: 2));
+    await testGutterSize(
+        tester, large, const Gutter.from(size: 40, scaleFactor: 2));
   });
 
   testWidgets(
       'should apply correct custom size for gutter with size on small screens',
       (WidgetTester tester) async {
-    await testGutterSize(tester, small, const Gutter(size: 10));
+    await testGutterSize(tester, small, const Gutter.from(size: 10));
   });
 }

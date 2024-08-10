@@ -131,25 +131,13 @@ void main() {
     );
   });
 
-  // Tests for Gutter.singleLine
-  testWidgets('should apply custom Gutter.singleLine for large screens',
-      (WidgetTester tester) async {
-    await testAdaptiveGutter(
-      tester,
-      large,
-      const Gutter.small(),
-      const Gutter.medium(),
-      const Gutter.singleLine(),
-    );
-  });
-
   // Tests with custom size and scaleFactor
   testWidgets('should apply custom size for Gutter on small screens',
       (WidgetTester tester) async {
     await testAdaptiveGutter(
       tester,
       small,
-      const Gutter(size: 10),
+      const Gutter.from(size: 10),
       const Gutter.medium(),
       const Gutter.large(),
     );
@@ -174,7 +162,7 @@ void main() {
       large,
       const Gutter.small(),
       const Gutter.medium(),
-      const Gutter(size: 30, scaleFactor: 1.5),
+      const Gutter.from(size: 30, scaleFactor: 1.5),
     );
   });
 }
