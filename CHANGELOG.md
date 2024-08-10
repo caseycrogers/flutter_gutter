@@ -4,11 +4,9 @@
 
 - Add optional size and scaleFactor parameters
 - Introduce constructors on Gutter: `Gutter.tiny`, `Gutter.small`, `Gutter.medium`, `Gutter.large`, `Gutter.extraLarge`
-- Add `Gutter.expand` and `Gutter.singleLine`
 - Add extension to add Gutter on Lists
 - Migrate to `flutter_adaptive_scaffold` to remove deprecated package
 - Add `AdaptiveGutter` that switches `Gutter` size based on the current breakpoint
-- Add `PaddingGutter` that adds material padding to a child widget
 - BREAKING CHANGE: Removal of `Gap`
 - BREAKING CHANGE: Rename `Margin` to `GutterMargin`
 

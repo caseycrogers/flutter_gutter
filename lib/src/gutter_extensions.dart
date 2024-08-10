@@ -55,7 +55,6 @@ extension GutterExtensions on BuildContext {
                 materialSpacing * GutterType.large.scaleFactor,
               GutterType.extraLarge =>
                 materialSpacing * GutterType.extraLarge.scaleFactor,
-              GutterType.expand => double.infinity,
             };
   }
 

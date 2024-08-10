@@ -41,15 +41,8 @@ void main() {
       scaleFactor: gutterWidget.scaleFactor,
     );
 
-    if (gutterWidget.type == GutterType.expand) {
-      // Special handling for Gutter.expand
-      final Size scaffoldSize = tester.getSize(find.byType(Scaffold));
-      final Size gutterSize = tester.getSize(find.byType(Gutter));
-      expect(gutterSize.height, scaffoldSize.height);
-    } else {
-      final Size gutterSize = tester.getSize(find.byType(Gutter));
-      expect(gutterSize.height, expectedSize);
-    }
+    final Size gutterSize = tester.getSize(find.byType(Gutter));
+    expect(gutterSize.height, expectedSize);
   }
 
   // Tests for AdaptiveGutter with different configurations
@@ -83,28 +76,6 @@ void main() {
       const Gutter.small(),
       const Gutter.large(),
       const Gutter.medium(),
-    );
-  });
-
-  testWidgets('should apply custom Gutter.expand for medium screens',
-      (WidgetTester tester) async {
-    await testAdaptiveGutter(
-      tester,
-      medium,
-      const Gutter.small(),
-      const Gutter.expand(),
-      const Gutter.medium(),
-    );
-  });
-
-  testWidgets('should apply custom Gutter.expand for large screens',
-      (WidgetTester tester) async {
-    await testAdaptiveGutter(
-      tester,
-      large,
-      const Gutter.small(),
-      const Gutter.medium(),
-      const Gutter.expand(),
     );
   });
 

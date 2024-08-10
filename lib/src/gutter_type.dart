@@ -15,10 +15,7 @@ enum GutterType {
   large(Gutter.scaleFactorDefaultSmall),
 
   /// An extra large gutter.
-  extraLarge(Gutter.scaleFactorDefaultMedium),
-
-  /// An expanded gutter.
-  expand(Gutter.scaleFactorDefault);
+  extraLarge(Gutter.scaleFactorDefaultMedium);
 
   const GutterType(
     this.scaleFactor,
@@ -43,8 +40,6 @@ extension GutterTypeExtensions on GutterType {
         return const Gutter.large();
       case GutterType.extraLarge:
         return const Gutter.extraLarge();
-      case GutterType.expand:
-        return const Gutter.expand();
     }
   }
 }

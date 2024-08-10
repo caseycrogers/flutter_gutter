@@ -31,15 +31,8 @@ void main() {
       scaleFactor: gutterWidget.scaleFactor,
     );
 
-    if (gutterWidget.type == GutterType.expand) {
-      // Special handling for Gutter.expand
-      final Size scaffoldSize = tester.getSize(find.byType(Scaffold));
-      final Size gutterSize = tester.getSize(find.byType(Gutter));
-      expect(gutterSize.height, scaffoldSize.height);
-    } else {
-      final Size gutterSize = tester.getSize(find.byType(Gutter));
-      expect(gutterSize.height, expectedSize);
-    }
+    final Size gutterSize = tester.getSize(find.byType(Gutter));
+    expect(gutterSize.height, expectedSize);
   }
 
   // Tests for Gutter.tiny
@@ -130,25 +123,6 @@ void main() {
     await testGutterSize(tester, large, const Gutter.extraLarge());
   });
 
-  // Tests for Gutter.expand
-  testWidgets(
-      'should apply correct gap size for expand gutter on small screens',
-      (WidgetTester tester) async {
-    await testGutterSize(tester, small, const Gutter.expand());
-  });
-
-  testWidgets(
-      'should apply correct gap size for expand gutter on medium screens',
-      (WidgetTester tester) async {
-    await testGutterSize(tester, medium, const Gutter.expand());
-  });
-
-  testWidgets(
-      'should apply correct gap size for expand gutter on large screens',
-      (WidgetTester tester) async {
-    await testGutterSize(tester, large, const Gutter.expand());
-  });
-
   // Tests with custom size and scaleFactor
   testWidgets(
       'should apply correct custom size for tiny gutter on small screens',
@@ -182,7 +156,7 @@ void main() {
   });
 
   testWidgets(
-      'should apply correct custom size for expand gutter with size on large screens',
+      'should apply correct custom size for gutter with size on large screens',
       (WidgetTester tester) async {
     await testGutterSize(
         tester, large, const Gutter.from(size: 40, scaleFactor: 2));

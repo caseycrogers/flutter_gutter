@@ -69,11 +69,6 @@ class Gutter extends StatelessWidget {
       : type = GutterType.extraLarge,
         size = null;
 
-  /// Creates a new [Gutter] widget with an expand size.
-  const Gutter.expand({super.key, this.scaleFactor = 1})
-      : type = GutterType.expand,
-        size = null;
-
   @override
   Widget build(BuildContext context) {
     return AxisAwareOrientation(
@@ -85,19 +80,10 @@ class Gutter extends StatelessWidget {
           scaleFactor: scaleFactor,
         );
 
-        if (type == GutterType.expand) {
-          return Expanded(
-            child: SizedBox(
-              width: orientation == Orientation.landscape ? gutterSize : null,
-              height: orientation != Orientation.portrait ? null : gutterSize,
-            ),
-          );
-        } else {
-          return SizedBox(
-            width: orientation == Orientation.landscape ? gutterSize : null,
-            height: orientation != Orientation.portrait ? null : gutterSize,
-          );
-        }
+        return SizedBox(
+          width: orientation == Orientation.landscape ? gutterSize : null,
+          height: orientation != Orientation.portrait ? null : gutterSize,
+        );
       },
     );
   }
