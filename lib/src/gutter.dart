@@ -116,7 +116,7 @@ class GutterLarge extends Gutter {
   const GutterLarge({super.key}) : super.large();
 }
 
-/// A gap three times the standard gutter size according to Material Design's
+/// A gap four times the standard gutter size according to Material Design's
 /// breakpoints system.
 class GutterExtraLarge extends Gutter {
   /// Creates a new [GutterExtraLarge] widget.
