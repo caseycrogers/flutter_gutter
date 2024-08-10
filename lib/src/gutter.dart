@@ -16,9 +16,11 @@ class Gutter extends StatelessWidget {
   });
 
   /// The spacing used on small screens according to Material Design's
+  /// See: https://m3.material.io/foundations/layout/applying-layout/compact
   static const double materialSpacingSmall = 16;
 
   /// The spacing used on medium and large screens according to Material Design's
+  /// See: https://m3.material.io/foundations/layout/applying-layout/medium
   static const double materialSpacingMediumAndUp = 24;
 
   /// The default scale factor for a gutter.
