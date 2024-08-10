@@ -91,7 +91,6 @@ class Gutter extends StatelessWidget {
 
 /// A gap a quarter the standard gutter size according to Material Design's
 /// breakpoints system
-@Deprecated('Use Gutter.tiny instead')
 class GutterTiny extends Gutter {
   /// Creates a new [GutterTiny] widget.
   const GutterTiny({super.key}) : super.tiny();
@@ -99,16 +98,27 @@ class GutterTiny extends Gutter {
 
 /// A gap half the standard gutter size according to Material Design's
 /// breakpoints system
-@Deprecated('Use Gutter.small instead')
 class GutterSmall extends Gutter {
   /// Creates a new [GutterSmall] widget.
   const GutterSmall({super.key}) : super.small();
 }
 
+/// A gap of the standard gutter size according to Material Design's
+class GutterMedium extends Gutter {
+  /// Creates a new [GutterMedium] widget.
+  const GutterMedium({super.key}) : super.medium();
+}
+
 /// A gap twice the standard gutter size according to Material Design's
 /// breakpoints system.
-@Deprecated('Use Gutter.large instead')
 class GutterLarge extends Gutter {
   /// Creates a new [GutterLarge] widget.
   const GutterLarge({super.key}) : super.large();
+}
+
+/// A gap three times the standard gutter size according to Material Design's
+/// breakpoints system.
+class GutterExtraLarge extends Gutter {
+  /// Creates a new [GutterExtraLarge] widget.
+  const GutterExtraLarge({super.key}) : super.extraLarge();
 }
