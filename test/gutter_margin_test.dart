@@ -79,27 +79,26 @@ void main() {
   testWidgets(
       'should apply correct margin for GutterMargin with specific size on medium screens',
       (WidgetTester tester) async {
-    await testGutterMargin(tester, medium,
-        const GutterMargin(size: 20, type: GutterType.extraLarge));
+    await testGutterMargin(tester, medium, const GutterMargin.from(size: 20));
   });
 
   testWidgets(
       'should apply correct margin for GutterMargin with specific size on medium screens',
       (WidgetTester tester) async {
     await testGutterMargin(
-        tester, medium, const GutterMargin(size: 30, scaleFactor: 1.2));
+        tester, medium, const GutterMargin.from(size: 30, scaleFactor: 1.2));
   });
 
   testWidgets(
       'should apply correct margin for GutterMargin with specific size on large screens',
       (WidgetTester tester) async {
     await testGutterMargin(
-        tester, large, const GutterMargin(size: 40, scaleFactor: 2));
+        tester, large, const GutterMargin.from(size: 40, scaleFactor: 2));
   });
 
   testWidgets(
       'should apply correct margin for GutterMargin with specific size on small screens',
       (WidgetTester tester) async {
-    await testGutterMargin(tester, small, const GutterMargin(size: 10));
+    await testGutterMargin(tester, small, const GutterMargin.from(size: 10));
   });
 }
