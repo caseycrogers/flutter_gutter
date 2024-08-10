@@ -52,10 +52,6 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const GutterPadding.all(
-                value: Gutter.medium(),
-                child: ColoredBox(color: Colors.blue, child: Text('Child')),
-              ),
               const Text('Button tapped'),
               const Gutter.small(),
               Text(
