@@ -39,6 +39,9 @@ jobs:
           architecture: x64
           cache: true
 
+      - name: Disable flutter cli animations
+        run: flutter config --no-cli-animations
+
       - name: Install dependencies
         run: dart pub get
 
@@ -48,8 +51,8 @@ jobs:
       - name: Analyze static code
         run: dart analyze
 
-      # - name: Run tests
-      #   run: flutter test --no-pub --coverage
+      - name: Run tests
+        run: flutter test --no-pub --coverage
 
       - name: Check publish warnings
         run: dart pub publish --dry-run
