@@ -2,13 +2,10 @@
 
 ## [2.0.0] - 07/31/2024
 
-- Add optional size and scaleFactor parameters
+- Add optional scaleFactor parameter
 - Introduce constructors on Gutter: `Gutter.tiny`, `Gutter.small`, `Gutter.medium`, `Gutter.large`, `Gutter.extraLarge`
-- Add extension to add Gutter on Lists
+- Extend `GutterConfiguration` to allow customizing the default gutter sizes and relative scales
 - Migrate to `flutter_adaptive_scaffold` to remove deprecated package
-- Add `AdaptiveGutter` that switches `Gutter` size based on the current breakpoint
-- BREAKING CHANGE: Removal of `Gap`
-- BREAKING CHANGE: Rename `Margin` to `GutterMargin`
 
 ## [1.0.3] - 07/27/2024
 
