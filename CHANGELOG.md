@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.0.0] - 07/31/2024
+## [2.0.0] - 08/12/2024
 
 - Add optional scaleFactor parameter
 - Introduce constructors on Gutter: `Gutter.tiny`, `Gutter.small`, `Gutter.medium`, `Gutter.large`, `Gutter.extraLarge`
