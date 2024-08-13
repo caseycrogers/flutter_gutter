@@ -37,7 +37,7 @@ extension GutterExtensions on BuildContext {
 
   MaterialBreakpointSpacing get _spacing =>
       GutterConfiguration.maybeOf(this)?.spacing ??
-          GutterConfigurationData.kDefaultSpacing;
+      GutterConfigurationData.kDefaultSpacing;
 
   GutterScaling get _scaling =>
       GutterConfiguration.maybeOf(this)?.scaling ??

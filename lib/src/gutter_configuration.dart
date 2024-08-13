@@ -16,24 +16,24 @@ class GutterConfigurationData {
   /// by the material breakpoints system.
   ///
   /// For example, a screen that is less than 600 pixels wide will get a base
-  /// spacing of 16 so a [Gutter] will be 16 dp large. 
+  /// spacing of 16 so a [Gutter] will be 16 dp large.
   static const MaterialBreakpointSpacing kDefaultSpacing =
       MaterialBreakpointSpacing();
 
   /// The default scaling of smaller or larger gutters with respect to the base
   /// [Gutter].
   ///
-  /// For example, [GutterTiny] is .25 times as large as [Gutter].  
+  /// For example, [GutterTiny] is .25 times as large as [Gutter].
   static const GutterScaling kDefaultScaling = GutterScaling();
 
   /// The spacing according to screen size to use for all [Gutter] widgets.
   ///
-  /// See [kDefaultSpacing].  
+  /// See [kDefaultSpacing].
   final MaterialBreakpointSpacing? spacing;
 
   /// The sizes of smaller and larger gutters relative to the material spacing.
   ///
-  /// See [kDefaultScaling].   
+  /// See [kDefaultScaling].
   final GutterScaling? scaling;
 
   /// A function to get the axis of a widget not supported by flutter_gutter.
