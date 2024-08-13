@@ -16,51 +16,15 @@ Gutters and margins:
 2. Size the gap according to the current screen size and Material Design's corresponding breakpoint
    definition (small gap on small screens, larger gap on large screens)
 
-`Gutter.tiny`, `Gutter.small`, `Gutter.medium`, `Gutter.large` and `Gutter.extraLarge` all provide gaps that are factors of the base gutter
-size for situations where larger or smaller gaps are more appropriate. The default sizing is used on: `Gutter` or `Gutter.medium`.
+`GutterTiny`, `GutterSmall`, `GutterLarge` and `GutterExtraLarge` all provide gaps that are factors of the base gutter
+size for situations where larger or smaller gaps are more appropriate. By default, each successive
+gutter size is a factor of 2 larger than the previous.
+For convenience, alternative constructors are provided (`Gutter.tiny`, etc.) for each gutter size. 
 
 For more flexibility, you can also use the provided extension on `BuildContext` to reference the
 gutter and margin sizes directly (`context.gutter`, `context.gutterLarge`, `context.margin`, etc).
 
-It is possible to manually create a `Gutter` with a specific `size` or `scaleFactor`.
-
-```dart
-const Gutter(size: 20, scaleFactor: 3, type: GutterType.large)
-```
-
-You can use `AdaptiveGutter` to set a `Gutter` per screen size breakpoint.
-
-```dart
-const AdaptiveGutter(
-    small: Gutter.tiny(),
-    medium: Gutter.large(),
-    large: Gutter.extraLarge(),
-  )
-```
-
-On Iterable Widgets you can set a Gutter on every item:
-
-```dart
-<Widget>[
-    const Text('Test1'),
-    const Text('Test2'),
-    const Text('Test3'),
-  ].withGutter() // Optional parameter to set which Gutter size you want to use
-```
-
-Using `GutterPadding` you can add a `Widget` that insets its child by the material padding or the given padding.
-
-```dart
-const GutterPadding.only(
-    left: Gutter.medium(),
-    right: Gutter.small(),
-    top: Gutter(size: 20),
-    bottom: Gutter.medium(scaleFactor: 3),
-    child: ColoredBox(color: Colors.blue, child: Text('Child')),
-)
-```
-
-You can use `Gutter` with other packages using `GutterConfiguration` and `widgetToAxis` (see example).
+Use `Gap` to create an axis aligned spacing with an explicit size.
 
 ## Supported Widgets
 
@@ -77,9 +41,9 @@ Note that case 3 means that ANY widget with an axis is supported, however this i
 which means that the Dart compiler will not be able to tree shake out any `axis` attributes on any
 widget. This may increase your app's bundle size by a very small amount.
 
-I have a [Github issue](https://github.com/flutter/flutter/issues/133394) against Flutter to add an
-explicit axis scope to Flutter which would resolve this limitation. If you like using Flutter Gutter
-and want to see it improved, please upvote the linked issue.
+I have a [Github issue](https://github.com/flutter/flutter/issues/133394) against Flutter to add an explicit axis scope to Flutter which would
+resolve this limitation. If you like using Flutter Gutter and want to see it improved, please upvote
+the linked issue.
 
 ## Example
 
@@ -110,7 +74,7 @@ return Column(
 );
 ```
 
-To use the material break point values directly, use the extension on `context`:
+To use the gutter sizes directly, use the extension on `context`:
 
 ```dart
 return Padding(
@@ -119,22 +83,22 @@ return Padding(
 );
 ```
 
-To use `Gutter` with custom widgets that don't expose an `axis` argument, use `GutterConfiguration`:
+To use `Gutter` with custom widgets that don't expose an `axis` argument or to override the default
+gutter spacing or scaling, use `GutterConfiguration`:
 
 ```dart
 return GutterConfiguration(
   data: GutterConfigurationData(
     widgetToAxis: (widget) {
-      if (widget is BoxyFlex) {
-        // Boxy widgets expose their axes via `BoxyFlex.direction`.
-        return widget.direction;
+      if (widget is MyCustomColumn) {
+        return Axis.vertical;
       }
       return null;
     },
   ),
   child: MyCustomColumn(
     children: [
-      const Text('This widget wasn\'t supported by `Gutter` ).'),
+      const Text('This widget isn\'t supported by `Gutter` ).'),
       Gutter(),
       const Text('But with `GutterConfiguration` I can make Gutter work with any widget!'),
     ],

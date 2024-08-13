@@ -3,15 +3,17 @@ import 'package:flutter_gutter/flutter_gutter.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  // Breakpoints
+  const Size smallSize = Size(599, 800); // Breakpoints.small
+
   group('GutterExtensions', () {
     testWidgets('gutterTiny returns correct size', (WidgetTester tester) async {
+      tester.view.physicalSize = smallSize;
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
             builder: (BuildContext context) {
-              final double gutterTiny = context.gutterTiny;
-              expect(gutterTiny,
-                  equals(context.gutterSize(type: GutterType.tiny)));
+              expect(context.gutterTiny, .25 * 16);
               return Container();
             },
           ),
@@ -21,13 +23,12 @@ void main() {
 
     testWidgets('gutterSmall returns correct size',
         (WidgetTester tester) async {
+      tester.view.physicalSize = smallSize;
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
             builder: (BuildContext context) {
-              final double gutterSmall = context.gutterSmall;
-              expect(gutterSmall,
-                  equals(context.gutterSize(type: GutterType.small)));
+              expect(context.gutterSmall, .5 * 16);
               return Container();
             },
           ),
@@ -37,13 +38,12 @@ void main() {
 
     testWidgets('gutterMedium returns correct size',
         (WidgetTester tester) async {
+      tester.view.physicalSize = smallSize;
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
             builder: (BuildContext context) {
-              final double gutterMedium = context.gutterMedium;
-              expect(gutterMedium,
-                  equals(context.gutterSize(type: GutterType.medium)));
+              expect(context.gutter, 16);
               return Container();
             },
           ),
@@ -53,13 +53,12 @@ void main() {
 
     testWidgets('gutterLarge returns correct size',
         (WidgetTester tester) async {
+      tester.view.physicalSize = smallSize;
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
             builder: (BuildContext context) {
-              final double gutterLarge = context.gutterLarge;
-              expect(gutterLarge,
-                  equals(context.gutterSize(type: GutterType.large)));
+              expect(context.gutterLarge, 2 * 16);
               return Container();
             },
           ),
@@ -69,13 +68,13 @@ void main() {
 
     testWidgets('gutterExtraLarge returns correct size',
         (WidgetTester tester) async {
+      tester.view.physicalSize = smallSize;
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
             builder: (BuildContext context) {
               final double gutterExtraLarge = context.gutterExtraLarge;
-              expect(gutterExtraLarge,
-                  equals(context.gutterSize(type: GutterType.extraLarge)));
+              expect(gutterExtraLarge, 4 * 16);
               return Container();
             },
           ),
