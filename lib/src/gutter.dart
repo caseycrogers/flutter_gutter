@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../flutter_gutter.dart';
 import 'gap.dart';
 import 'gutter_extensions.dart';
 
@@ -67,8 +66,8 @@ class Gutter extends StatelessWidget {
   /// Creates a new [Gutter] widget with an extra large size.
   ///
   /// Equivalent to [GutterExtraLarge].
-  const Gutter.extraLarge({Key? key, double scaleFactor = 1}) :
-      this._(GutterExtraLarge._sizeOf, key: key, scaleFactor: scaleFactor);
+  const Gutter.extraLarge({Key? key, double scaleFactor = 1})
+      : this._(GutterExtraLarge._sizeOf, key: key, scaleFactor: scaleFactor);
 
   static double _sizeOf(BuildContext context) => context.gutter;
 
