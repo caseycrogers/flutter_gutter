@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.1] - 08/15/2024
+
+- Make alternate constructors const
+
 ## [2.0.0] - 08/12/2024
 
 - Add optional scaleFactor parameter
