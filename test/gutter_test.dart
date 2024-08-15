@@ -371,8 +371,10 @@ void main() {
         extraLargeSize,
         const GutterTiny(),
         .25 * 24,
-        layoutBuilder: (Widget gutter) =>
-            OverflowBar(children: <Widget>[gutter]),
+        layoutBuilder: (Widget gutter) => OverflowBar(children: <Widget>[
+          const SizedBox(width: 10, height: 10),
+          gutter,
+        ]),
       );
     });
 
