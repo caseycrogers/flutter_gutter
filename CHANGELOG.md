@@ -1,15 +1,17 @@
 # Changelog
 
-## [2.0.1] - 08/15/2024
+## [2.1.0] - 08/15/2024
 
-- Make alternate constructors const
+- Add `Gutter.custom` as an equivalent to `Gap`.
+- Make alternate constructors const.
+- Add tests for different axes and widgets.
 
 ## [2.0.0] - 08/12/2024
 
-- Add optional scaleFactor parameter
-- Introduce constructors on Gutter: `Gutter.tiny`, `Gutter.small`, `Gutter.medium`, `Gutter.large`, `Gutter.extraLarge`
-- Extend `GutterConfiguration` to allow customizing the default gutter sizes and relative scales
-- Migrate to `flutter_adaptive_scaffold` to remove deprecated package
+- Add optional scaleFactor parameter.
+- Introduce constructors on Gutter: `Gutter.tiny`, `Gutter.small`, `Gutter.medium`, `Gutter.large`, `Gutter.extraLarge`.
+- Extend `GutterConfiguration` to allow customizing the default gutter sizes and relative scales.
+- Migrate to `flutter_adaptive_scaffold` to remove deprecated package.
 
 ## [1.0.3] - 07/27/2024
 
