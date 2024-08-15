@@ -17,11 +17,13 @@ import 'gutter_extensions.dart';
 /// larger gutters, are set by [GutterConfigurationData]. See
 /// [GutterConfiguration] if you'd like to override the spacing behavior.
 class Gutter extends StatelessWidget {
+  const Gutter._(this._getSize, {super.key, required this.scaleFactor});
+
   /// Creates a new [Gutter] widget.
   const Gutter({
-    super.key,
-    this.scaleFactor = 1,
-  });
+    Key? key,
+    double scaleFactor = 1,
+  }) : this._(_sizeOf, key: key, scaleFactor: scaleFactor);
 
   /// Additional scale factor to apply to the gutter size.
   ///
@@ -35,38 +37,41 @@ class Gutter extends StatelessWidget {
   /// ```
   final double scaleFactor;
 
+  // We use an instance variable for the size getter so that each alternate
+  // constructor can have different sizes while still being const.
+  final double Function(BuildContext context) _getSize;
+
   /// Creates a new [Gutter] widget with a tiny size.
   ///
   /// Equivalent to [GutterTiny].
-  factory Gutter.tiny({Key? key, double scaleFactor = 1}) =>
-      GutterTiny(key: key, scaleFactor: scaleFactor);
+  const Gutter.tiny({Key? key, double scaleFactor = 1})
+      : this._(GutterTiny._sizeOf, key: key, scaleFactor: scaleFactor);
 
   /// Creates a new [Gutter] widget with a small size.
   ///
   /// Equivalent to [GutterSmall].
-  factory Gutter.small({Key? key, double scaleFactor = 1}) =>
-      GutterSmall(key: key, scaleFactor: scaleFactor);
+  const Gutter.small({Key? key, double scaleFactor = 1})
+      : this._(GutterSmall._sizeOf, key: key, scaleFactor: scaleFactor);
 
   /// Creates a new [Gutter] widget with a medium size.
   ///
   /// This is equivalent to a [Gutter] as `medium` is the default gutter size.
-  factory Gutter.medium({Key? key, double scaleFactor = 1}) =>
-      Gutter(key: key, scaleFactor: scaleFactor);
+  const Gutter.medium({Key? key, double scaleFactor = 1})
+      : this(key: key, scaleFactor: scaleFactor);
 
   /// Creates a new [Gutter] widget with a large size.
   ///
   /// Equivalent to [GutterLarge].
-  factory Gutter.large({Key? key, double scaleFactor = 1}) =>
-      GutterLarge(key: key, scaleFactor: scaleFactor);
+  const Gutter.large({Key? key, double scaleFactor = 1})
+      : this._(GutterLarge._sizeOf, key: key, scaleFactor: scaleFactor);
 
   /// Creates a new [Gutter] widget with an extra large size.
   ///
   /// Equivalent to [GutterExtraLarge].
-  factory Gutter.extraLarge({Key? key, double scaleFactor = 1}) =>
-      GutterExtraLarge(key: key, scaleFactor: scaleFactor);
+  const Gutter.extraLarge({Key? key, double scaleFactor = 1})
+      : this._(GutterExtraLarge._sizeOf, key: key, scaleFactor: scaleFactor);
 
-  // Use a method to get the size so that sub-class can override the size logic.
-  double _getSize(BuildContext context) => context.gutter;
+  static double _sizeOf(BuildContext context) => context.gutter;
 
   @override
   Widget build(BuildContext context) {
@@ -78,38 +83,34 @@ class Gutter extends StatelessWidget {
 /// breakpoints system
 class GutterTiny extends Gutter {
   /// Creates a new [GutterTiny] widget.
-  const GutterTiny({super.key, super.scaleFactor});
+  const GutterTiny({super.key, super.scaleFactor = 1}) : super._(_sizeOf);
 
-  @override
-  double _getSize(BuildContext context) => context.gutterTiny;
+  static double _sizeOf(BuildContext context) => context.gutterTiny;
 }
 
 /// A gap half the standard gutter size according to Material Design's
 /// breakpoints system
 class GutterSmall extends Gutter {
   /// Creates a new [GutterSmall] widget.
-  const GutterSmall({super.key, super.scaleFactor});
+  const GutterSmall({super.key, super.scaleFactor = 1}) : super._(_sizeOf);
 
-  @override
-  double _getSize(BuildContext context) => context.gutterSmall;
+  static double _sizeOf(BuildContext context) => context.gutterSmall;
 }
 
 /// A gap twice the standard gutter size according to Material Design's
 /// breakpoints system.
 class GutterLarge extends Gutter {
   /// Creates a new [GutterLarge] widget.
-  const GutterLarge({super.key, super.scaleFactor});
+  const GutterLarge({super.key, super.scaleFactor = 1}) : super._(_sizeOf);
 
-  @override
-  double _getSize(BuildContext context) => context.gutterLarge;
+  static double _sizeOf(BuildContext context) => context.gutterLarge;
 }
 
 /// A gap four times the standard gutter size according to Material Design's
 /// breakpoints system.
 class GutterExtraLarge extends Gutter {
   /// Creates a new [GutterExtraLarge] widget.
-  const GutterExtraLarge({super.key, super.scaleFactor});
+  const GutterExtraLarge({super.key, super.scaleFactor = 1}) : super._(_sizeOf);
 
-  @override
-  double _getSize(BuildContext context) => context.gutterExtraLarge;
+  static double _sizeOf(BuildContext context) => context.gutterExtraLarge;
 }
