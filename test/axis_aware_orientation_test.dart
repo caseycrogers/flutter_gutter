@@ -11,9 +11,11 @@ void main() {
           children: <Widget>[
             AxisAwareOrientation(
               builder: (BuildContext context, Orientation orientation) {
-                return Text(orientation == Orientation.landscape
-                    ? 'Landscape'
-                    : 'Portrait');
+                return Text(
+                  orientation == Orientation.landscape
+                      ? 'Landscape'
+                      : 'Portrait',
+                );
               },
             ),
           ],
@@ -33,9 +35,11 @@ void main() {
           children: <Widget>[
             AxisAwareOrientation(
               builder: (BuildContext context, Orientation orientation) {
-                return Text(orientation == Orientation.landscape
-                    ? 'Landscape'
-                    : 'Portrait');
+                return Text(
+                  orientation == Orientation.landscape
+                      ? 'Landscape'
+                      : 'Portrait',
+                );
               },
             ),
           ],
@@ -55,9 +59,9 @@ void main() {
           scrollDirection: Axis.horizontal,
           child: AxisAwareOrientation(
             builder: (BuildContext context, Orientation orientation) {
-              return Text(orientation == Orientation.landscape
-                  ? 'Landscape'
-                  : 'Portrait');
+              return Text(
+                orientation == Orientation.landscape ? 'Landscape' : 'Portrait',
+              );
             },
           ),
         ),
@@ -76,9 +80,9 @@ void main() {
           scrollDirection: Axis.vertical,
           child: AxisAwareOrientation(
             builder: (BuildContext context, Orientation orientation) {
-              return Text(orientation == Orientation.landscape
-                  ? 'Landscape'
-                  : 'Portrait');
+              return Text(
+                orientation == Orientation.landscape ? 'Landscape' : 'Portrait',
+              );
             },
           ),
         ),
