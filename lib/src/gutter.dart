@@ -13,17 +13,33 @@ import 'gutter_extensions.dart';
 /// ([Gutter.gutterTiny], etc) to create spaces that are multiples of the base
 /// gutter size.
 ///
+/// Use [Gap] or [Gutter.custom] to create a spacing with an arbitrary size.
+///
 /// The default spacing of a gutter, and the relative sizes of the smaller or
 /// larger gutters, are set by [GutterConfigurationData]. See
 /// [GutterConfiguration] if you'd like to override the spacing behavior.
 class Gutter extends StatelessWidget {
-  const Gutter._(this._getSize, {super.key, required this.scaleFactor});
+  // A private constructor with private fields used to manage having both
+  // alternate constructors and alternate widgets.
+  const Gutter._(
+    this._customSize,
+    this._getSize, {
+    super.key,
+    required this.scaleFactor,
+  })  : assert(
+          _customSize == null || (_getSize == null && scaleFactor == null),
+          'Custom size and get size cannot both be null.',
+        ),
+        assert(
+          _customSize != null || (_getSize != null && scaleFactor != null),
+          'You must specify either a custom size or get size.',
+        );
 
   /// Creates a new [Gutter] widget.
   const Gutter({
     Key? key,
     double scaleFactor = 1,
-  }) : this._(_sizeOf, key: key, scaleFactor: scaleFactor);
+  }) : this._(null, _sizeOf, key: key, scaleFactor: scaleFactor);
 
   /// Additional scale factor to apply to the gutter size.
   ///
@@ -35,23 +51,25 @@ class Gutter extends StatelessWidget {
   ///   Gutter(scaleFactor: 1.5),
   /// ],
   /// ```
-  final double scaleFactor;
+  final double? scaleFactor;
+
+  final double? _customSize;
 
   // We use an instance variable for the size getter so that each alternate
   // constructor can have different sizes while still being const.
-  final double Function(BuildContext context) _getSize;
+  final double Function(BuildContext context)? _getSize;
 
   /// Creates a new [Gutter] widget with a tiny size.
   ///
   /// Equivalent to [GutterTiny].
   const Gutter.tiny({Key? key, double scaleFactor = 1})
-      : this._(GutterTiny._sizeOf, key: key, scaleFactor: scaleFactor);
+      : this._(null, GutterTiny._sizeOf, key: key, scaleFactor: scaleFactor);
 
   /// Creates a new [Gutter] widget with a small size.
   ///
   /// Equivalent to [GutterSmall].
   const Gutter.small({Key? key, double scaleFactor = 1})
-      : this._(GutterSmall._sizeOf, key: key, scaleFactor: scaleFactor);
+      : this._(null, GutterSmall._sizeOf, key: key, scaleFactor: scaleFactor);
 
   /// Creates a new [Gutter] widget with a medium size.
   ///
@@ -63,23 +81,32 @@ class Gutter extends StatelessWidget {
   ///
   /// Equivalent to [GutterLarge].
   const Gutter.large({Key? key, double scaleFactor = 1})
-      : this._(GutterLarge._sizeOf, key: key, scaleFactor: scaleFactor);
+      : this._(null, GutterLarge._sizeOf, key: key, scaleFactor: scaleFactor);
 
   /// Creates a new [Gutter] widget with an extra large size.
   ///
   /// Equivalent to [GutterExtraLarge].
   const Gutter.extraLarge({Key? key, double scaleFactor = 1})
-      : this._(GutterExtraLarge._sizeOf, key: key, scaleFactor: scaleFactor);
+      : this._(
+          null,
+          GutterExtraLarge._sizeOf,
+          key: key,
+          scaleFactor: scaleFactor,
+        );
 
   /// Creates a new [Gutter] widget with a custom size.
-  Gutter.fromSize({Key? key, required double size, double scaleFactor = 1})
-      : this._((_) => size, key: key, scaleFactor: scaleFactor);
+  ///
+  /// Equivalent to [Gap].
+  const Gutter.custom({Key? key, required double size})
+      : this._(size, null, key: key, scaleFactor: null);
 
   static double _sizeOf(BuildContext context) => context.gutter;
 
   @override
   Widget build(BuildContext context) {
-    return Gap(size: scaleFactor * _getSize(context));
+    // If custom size is non-null, it's safe to use `!` as the assert in the
+    // private constructor ensures that they will be non-null.
+    return Gap(size: _customSize ?? (scaleFactor! * _getSize!(context)));
   }
 }
 
@@ -87,7 +114,7 @@ class Gutter extends StatelessWidget {
 /// breakpoints system
 class GutterTiny extends Gutter {
   /// Creates a new [GutterTiny] widget.
-  const GutterTiny({super.key, super.scaleFactor = 1}) : super._(_sizeOf);
+  const GutterTiny({super.key, super.scaleFactor = 1}) : super._(null, _sizeOf);
 
   static double _sizeOf(BuildContext context) => context.gutterTiny;
 }
@@ -96,7 +123,8 @@ class GutterTiny extends Gutter {
 /// breakpoints system
 class GutterSmall extends Gutter {
   /// Creates a new [GutterSmall] widget.
-  const GutterSmall({super.key, super.scaleFactor = 1}) : super._(_sizeOf);
+  const GutterSmall({super.key, super.scaleFactor = 1})
+      : super._(null, _sizeOf);
 
   static double _sizeOf(BuildContext context) => context.gutterSmall;
 }
@@ -112,7 +140,8 @@ class GutterMedium extends Gutter {
 /// breakpoints system.
 class GutterLarge extends Gutter {
   /// Creates a new [GutterLarge] widget.
-  const GutterLarge({super.key, super.scaleFactor = 1}) : super._(_sizeOf);
+  const GutterLarge({super.key, super.scaleFactor = 1})
+      : super._(null, _sizeOf);
 
   static double _sizeOf(BuildContext context) => context.gutterLarge;
 }
@@ -121,7 +150,8 @@ class GutterLarge extends Gutter {
 /// breakpoints system.
 class GutterExtraLarge extends Gutter {
   /// Creates a new [GutterExtraLarge] widget.
-  const GutterExtraLarge({super.key, super.scaleFactor = 1}) : super._(_sizeOf);
+  const GutterExtraLarge({super.key, super.scaleFactor = 1})
+      : super._(null, _sizeOf);
 
   static double _sizeOf(BuildContext context) => context.gutterExtraLarge;
 }
