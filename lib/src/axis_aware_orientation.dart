@@ -15,13 +15,25 @@ class AxisAwareOrientation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Orientation? orientation = findOrientation(context);
+
+    assert(
+      orientation != null,
+      'Could not find an ancestor row, column, scrollable, or fallback direction.',
+    );
+
+    return builder(context, orientation!);
+  }
+
+  /// Finds the orientation of the nearest ancestor with axis, direction or scrollable.
+  Orientation? findOrientation(BuildContext context) {
     final GutterConfigurationData? gutterConfiguration =
         GutterConfiguration.maybeOf(context);
     Orientation? orientation;
 
     final ScrollableState? scrollableState = Scrollable.maybeOf(context);
     final AxisDirection? axisDirection = scrollableState?.axisDirection;
-    final Axis? fallbackDirection =
+    final Axis? scrollableDirection =
         axisDirection == null ? null : axisDirectionToAxis(axisDirection);
 
     context.visitAncestorElements((Element element) {
@@ -60,16 +72,11 @@ class AxisAwareOrientation extends StatelessWidget {
     });
 
     // Use fallback direction if no orientation is found
-    if (orientation == null && fallbackDirection != null) {
-      orientation = fallbackDirection.toOrientation;
+    if (orientation == null && scrollableDirection != null) {
+      orientation = scrollableDirection.toOrientation;
     }
 
-    assert(
-      orientation != null,
-      'Could not find an ancestor row, column, scrollable, or fallback direction.',
-    );
-
-    return builder(context, orientation!);
+    return orientation;
   }
 }
 
