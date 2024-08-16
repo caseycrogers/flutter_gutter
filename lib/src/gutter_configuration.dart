@@ -103,7 +103,7 @@ class GutterConfiguration extends InheritedWidget {
 class MaterialBreakpointSpacing {
   /// Creates a [MaterialBreakpointSpacing].
   const MaterialBreakpointSpacing({
-    this.materialSpacingSmall = defaultMaterialSpacingSmall,
+    this.materialSpacingSmall = kDefaultMaterialSpacingSmall,
     this.materialSpacingMedium = kDefaultMaterialSpacingMediumAndUp,
     this.materialSpacingLarge = kDefaultMaterialSpacingMediumAndUp,
   });
@@ -120,7 +120,7 @@ class MaterialBreakpointSpacing {
   /// The default spacing used on small screens according to Material Design.
   ///
   /// See: https://m3.material.io/foundations/layout/applying-layout/compact
-  static const double defaultMaterialSpacingSmall = 16;
+  static const double kDefaultMaterialSpacingSmall = 16;
 
   /// The default spacing used on medium and large screens according to Material
   /// Design.

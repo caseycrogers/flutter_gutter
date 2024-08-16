@@ -28,11 +28,10 @@ extension GutterExtensions on BuildContext {
   double get materialSpacing {
     if (Breakpoints.small.isActive(this)) {
       return _spacing.materialSpacingSmall;
-    } else if (Breakpoints.mediumAndUp.isActive(this)) {
+    } else if (Breakpoints.medium.isActive(this)) {
       return _spacing.materialSpacingMedium;
-    } else {
-      return _spacing.materialSpacingSmall;
     }
+    return _spacing.materialSpacingLarge;
   }
 
   MaterialBreakpointSpacing get _spacing =>
