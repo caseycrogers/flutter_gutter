@@ -1,6 +1,8 @@
 # Flutter Gutter
 
-![](https://raw.githubusercontent.com/caseycrogers/flutter_gutter/main/dash_in_the_gutter.png)
+[![Pub Version](https://img.shields.io/pub/v/flutter_gutter?logo=flutter)](https://pub.dev/packages/flutter_gutter)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/caseycrogers/flutter_gutter/build.yaml?branch=main&logo=github)](https://github.com/caseycrogers/flutter_gutter/actions/workflows/build.yaml)
+
 Ensure all visual gaps between your widgets are consistent, adapted to the axis direction, and
 respond to screen size!
 
@@ -118,3 +120,5 @@ Gap and Flutter Gutter are very similar, but Flutter Gutter does a few extra thi
 Personally, I especially appreciate feature 1 as it makes it easier for me to add spacing and
 ensures that spacing and padding in different parts of my app are consistently sized. However, if
 none of the above features are important to you, you'll likely prefer the Gap package!
+
+![](https://raw.githubusercontent.com/caseycrogers/flutter_gutter/main/dash_in_the_gutter.png)
