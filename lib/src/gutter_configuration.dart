@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 
 /// An inherited widget that sets custom [Gutter] and [GutterPadding] behavior.
 class GutterConfigurationData {
@@ -103,9 +104,9 @@ class GutterConfiguration extends InheritedWidget {
 class MaterialBreakpointSpacing {
   /// Creates a [MaterialBreakpointSpacing].
   const MaterialBreakpointSpacing({
-    this.materialSpacingSmall = kDefaultMaterialSpacingSmall,
-    this.materialSpacingMedium = kDefaultMaterialSpacingMediumAndUp,
-    this.materialSpacingLarge = kDefaultMaterialSpacingMediumAndUp,
+    this.materialSpacingSmall = kMaterialCompactMargin,
+    this.materialSpacingMedium = kMaterialMediumAndUpMargin,
+    this.materialSpacingLarge = kMaterialMediumAndUpMargin,
   });
 
   /// The base gutter spacing to use for small screens.
@@ -116,17 +117,6 @@ class MaterialBreakpointSpacing {
 
   /// The base gutter spacing for large screens.
   final double materialSpacingLarge;
-
-  /// The default spacing used on small screens according to Material Design.
-  ///
-  /// See: https://m3.material.io/foundations/layout/applying-layout/compact
-  static const double kDefaultMaterialSpacingSmall = 16;
-
-  /// The default spacing used on medium and large screens according to Material
-  /// Design.
-  ///
-  /// See: https://m3.material.io/foundations/layout/applying-layout/medium
-  static const double kDefaultMaterialSpacingMediumAndUp = 24;
 }
 
 /// The scale factors of smaller or larger gutters relative to the default
