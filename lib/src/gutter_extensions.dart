@@ -25,14 +25,12 @@ extension GutterExtensions on BuildContext {
       materialSpacing * _scaling.extraLargeScaleFactor;
 
   /// The size according to Material Design's breakpoints system.
-  double get materialSpacing {
-    return switch (Breakpoint.activeBreakpointOf(this)) {
-      <= Breakpoints.small => _spacing.materialSpacingSmall,
-      <= Breakpoints.medium => _spacing.materialSpacingMedium,
-      // Default case for anything larger than medium.
-      Breakpoint() => _spacing.materialSpacingLarge,
-    };
-  }
+  double get materialSpacing => switch (Breakpoint.activeBreakpointOf(this)) {
+        <= Breakpoints.small => _spacing.materialSpacingSmall,
+        <= Breakpoints.medium => _spacing.materialSpacingMedium,
+        // Default case for anything larger than medium.
+        Breakpoint() => _spacing.materialSpacingLarge,
+      };
 
   MaterialBreakpointSpacing get _spacing =>
       GutterConfiguration.maybeOf(this)?.spacing ??
