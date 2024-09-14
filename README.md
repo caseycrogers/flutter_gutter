@@ -1,8 +1,12 @@
 # Flutter Gutter
 
-![](https://raw.githubusercontent.com/caseycrogers/flutter_gutter/main/dash_in_the_gutter.png)
+[![Pub Version](https://img.shields.io/pub/v/flutter_gutter?logo=flutter)](https://pub.dev/packages/flutter_gutter)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/caseycrogers/flutter_gutter/build.yaml?branch=main&logo=github)](https://github.com/caseycrogers/flutter_gutter/actions/workflows/build.yaml)
+
 Ensure all visual gaps between your widgets are consistent, adapted to the axis direction, and
 respond to screen size!
+
+![](https://raw.githubusercontent.com/caseycrogers/flutter_gutter/main/dash_in_the_gutter.png)
 
 ## Core Features
 
