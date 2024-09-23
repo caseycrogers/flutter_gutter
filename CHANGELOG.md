@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.0] - 09/16/2024
+
+* Refactored Breakpoint checks.
+* Update readme.
+* Update flutter_adaptive_scaffold.
+
 ## [2.1.1] - 08/15/2024
 
 * Update flutter_adaptive_scaffold
